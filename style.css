@@ -1,12 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.screen {
+  transition: margin 0.5s ease-out;
+}
+
+.screen.up {
+  margin-top: -100vh;
 }
 
 .hompage {
@@ -16,7 +22,6 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
   position: relative;
 }
 
@@ -57,4 +62,45 @@ body {
   width: 9.6rem;
   text-align: center;
   margin-top: 10rem;
+  cursor: pointer;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 1.5rem;
+}
+
+.inputs > div {
+  margin-bottom: 1rem;
+}
+
+#name {
+  margin-left: 8rem;
+}
+
+#age {
+  margin-left: 9.3rem;
+}
+
+#height {
+  margin-left: 5.5rem;
+}
+
+.exercise {
+  display: flex;
+  flex-direction: column;
 }

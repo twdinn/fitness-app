@@ -8,13 +8,49 @@
     <title>Fitness App</title>
   </head>
   <body>
-    <section class="hompage">
+    <section class="screen hompage">
       <div class="intro">
         <div class="get-started">
           <h1>Your Fitness Journey Starts Here!!</h1>
           <button class="start-btn">Get Started</button>
         </div>
       </div>
+    </section>
+    <section class="screen details">
+      <form>
+        <div class="inputs">
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Name" />
+          </div>
+          <div>
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age" />
+          </div>
+          <div>
+            <label for="height">Height(ft):</label>
+            <input type="text" id="height" name="feet" />
+            <input type="text" id="height" name="inches" />
+          </div>
+          <div>
+            <label for="curr-weight">Current Weight(lbs):</label>
+            <input type="text" id="curr-weight" name="curr-weight" />
+          </div>
+          <div>
+            <label for="go-weight">Goal Weight(lbs):</label>
+            <input type="text" id="go-weight" name="go-weight" />
+          </div>
+          <div>
+            <label for="exercise">Exercise:</label>
+            <input type="radio" id="weight-train" name="exercise" />
+            <label for="weight-train">Weight Training</label>
+            <input type="radio" id="body-weight" name="exercise" />
+            <label for="body-weight">Body Weight</label>
+          </div>
+        </div>
+
+        <button class="start-btn" type="submit">Submit</button>
+      </form>
     </section>
 
     <script src="script.js"></script>
