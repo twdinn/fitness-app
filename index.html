@@ -20,37 +20,53 @@
       <form>
         <div class="inputs">
           <div>
-            <label for="name">Name:</label>
+            <label class="label" for="name">Name:</label>
             <input type="text" id="name" name="name" placeholder="Name" />
           </div>
           <div>
-            <label for="age">Age:</label>
+            <label class="label" for="age">Age:</label>
             <input type="text" id="age" name="age" />
           </div>
           <div>
-            <label for="height">Height(ft):</label>
+            <label class="label" for="height">Height(ft):</label>
             <input type="text" id="height" name="feet" />
             <input type="text" id="height" name="inches" />
           </div>
           <div>
-            <label for="curr-weight">Current Weight(lbs):</label>
+            <label class="label" for="curr-weight">Current Weight(lbs):</label>
             <input type="text" id="curr-weight" name="curr-weight" />
           </div>
           <div>
-            <label for="go-weight">Goal Weight(lbs):</label>
+            <label class="label" for="go-weight">Goal Weight(lbs):</label>
             <input type="text" id="go-weight" name="go-weight" />
           </div>
           <div>
-            <label for="exercise">Exercise:</label>
-            <input type="radio" id="weight-train" name="exercise" />
-            <label for="weight-train">Weight Training</label>
-            <input type="radio" id="body-weight" name="exercise" />
-            <label for="body-weight">Body Weight</label>
+            <label class="label" for="exercise">Exercise:</label>
+            <input
+              type="radio"
+              id="weight-train"
+              name="exercise"
+              value="Weight Training"
+            />
+            <label class="label" for="weight-train">Weight Training</label>
+            <input
+              type="radio"
+              id="body-weight"
+              name="exercise"
+              value="Body Weight"
+            />
+            <label class="label" for="body-weight">Body Weight</label>
           </div>
         </div>
 
-        <button class="start-btn" type="submit">Submit</button>
+        <button class="submitBtn" type="submit">Submit</button>
       </form>
+    </section>
+    <section class="profile">
+      <div class="quad quad1">1</div>
+      <div class="quad quad2">2</div>
+      <div class="quad quad3">3</div>
+      <div class="quad quad4">4</div>
     </section>
 
     <script src="script.js"></script>
