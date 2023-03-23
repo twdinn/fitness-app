@@ -23,14 +23,14 @@
             <label class="label" for="name">Name:</label>
             <input type="text" id="name" name="name" placeholder="Name" />
           </div>
-          <div>
+          <!-- <div>
             <label class="label" for="age">Age:</label>
             <input type="text" id="age" name="age" />
-          </div>
+          </div> -->
           <div>
             <label class="label" for="height">Height(ft):</label>
-            <input type="text" id="height" name="feet" />
-            <input type="text" id="height" name="inches" />
+            <input type="text" id="feet" name="feet" placeholder="feet" />
+            <input type="text" id="inches" name="inches" placeholder="inches" />
           </div>
           <div>
             <label class="label" for="curr-weight">Current Weight(lbs):</label>
@@ -40,7 +40,7 @@
             <label class="label" for="go-weight">Goal Weight(lbs):</label>
             <input type="text" id="go-weight" name="go-weight" />
           </div>
-          <div>
+          <!-- <div>
             <label class="label" for="exercise">Exercise:</label>
             <input
               type="radio"
@@ -56,17 +56,21 @@
               value="Body Weight"
             />
             <label class="label" for="body-weight">Body Weight</label>
-          </div>
+          </div> -->
         </div>
 
         <button class="submitBtn" type="submit">Submit</button>
       </form>
     </section>
     <section class="profile">
-      <div class="quad quad1">1</div>
-      <div class="quad quad2">2</div>
-      <div class="quad quad3">3</div>
-      <div class="quad quad4">4</div>
+      <div>
+        <div class="quad quad1"></div>
+        <div class="quad quad2"></div>
+      </div>
+      <div>
+        <div class="quad quad3" id="map"></div>
+        <div class="quad quad4"></div>
+      </div>
     </section>
 
     <script src="script.js"></script>
