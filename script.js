@@ -24,7 +24,8 @@ const randomNumber = () => {
 
 // Get Exercises based on day of Week
 const getExercise = () => {
-  const dayOfWeek = 1;
+  const dayOfWeek = new Date().getDay();
+  console.log(dayOfWeek);
   const options = {
     method: "GET",
     headers: {
