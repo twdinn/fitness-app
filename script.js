@@ -13,6 +13,8 @@ const form = document.querySelector("form");
 const quad1 = document.querySelector(".quad1");
 const quad3 = document.querySelector(".quad3");
 
+const exerciseRadios = document.querySelectorAll('input[name="exercise"]');
+
 const exerciseURL =
   "https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises";
 
@@ -23,7 +25,16 @@ const randomNumber = () => {
 };
 
 // Get Exercises based on day of Week
-const getExercise = () => {
+const getExercise = async () => {
+  let selectedExercise;
+
+  exerciseRadios.forEach((radio) => {
+    if (radio.checked) {
+      selectedExercise = radio.value;
+      console.log(selectedExercise);
+    }
+  });
+
   const dayOfWeek = new Date().getDay();
   console.log(dayOfWeek);
   const options = {
@@ -36,127 +47,95 @@ const getExercise = () => {
 
   // Monday - Push day
   if (dayOfWeek === 1) {
-    fetch(`${exerciseURL}?muscle=chest`, options)
-      .then((response) => response.json())
-      .then((json) => {
-        const chestExercise = json[randomNumber()];
-        fetch(`${exerciseURL}?muscle=triceps`, options)
-          .then((response) => response.json())
-          .then((json) => {
-            const tricepsExercise = json[randomNumber()];
-            fetch(`${exerciseURL}?muscle=shoulders`, options)
-              .then((response) => response.json())
-              .then((json) => {
-                const shouldersExercise = json[randomNumber()];
-                workoutDay(
-                  chestExercise,
-                  tricepsExercise,
-                  shouldersExercise,
-                  dayOfWeek
-                );
-              });
-          });
-      });
+    const chestRsp = await fetch(`${exerciseURL}?muscle=chest`, options);
+    const chestJson = await chestRsp.json();
+    const chestExercise = chestJson[randomNumber()];
+
+    const tricepsRsp = await fetch(`${exerciseURL}?muscle=triceps`, options);
+    const tricepsJson = await tricepsRsp.json();
+    const tricepsExercise = tricepsJson[randomNumber()];
+
+    const shouldersRsp = await fetch(
+      `${exerciseURL}?muscle=shoulders`,
+      options
+    );
+    const shouldersJson = await shouldersRsp.json();
+    const shouldersExercise = shouldersJson[randomNumber()];
+
+    workoutDay(chestExercise, tricepsExercise, shouldersExercise, dayOfWeek);
   }
   // Tuesday - Pull Day
   else if (dayOfWeek === 2) {
-    fetch(`${exerciseURL}?muscle=middle_back`, options)
-      .then((response) => response.json())
-      .then((json) => {
-        const middlebackExercise = json[randomNumber()];
-        fetch(`${exerciseURL}?muscle=traps`, options)
-          .then((response) => response.json())
-          .then((json) => {
-            const trapsExercise = json[randomNumber()];
-            fetch(`${exerciseURL}?muscle=lats`, options)
-              .then((response) => response.json())
-              .then((json) => {
-                const latsExercise = json[randomNumber()];
-                workoutDay(
-                  middlebackExercise,
-                  trapsExercise,
-                  latsExercise,
-                  dayOfWeek
-                );
-              });
-          });
-      });
+    const middleBackRsp = await fetch(
+      `${exerciseURL}?muscle=middle_back`,
+      options
+    );
+    const middleBackJson = await middleBackRsp.json();
+    const middlebackExercise = middleBackJson[randomNumber()];
+
+    const trapsRsp = await fetch(`${exerciseURL}?muscle=traps`, options);
+    const trapsJson = await trapsRsp.json();
+    const trapsExercise = trapsJson[randomNumber()];
+
+    const latsRsp = await fetch(`${exerciseURL}?muscle=lats`, options);
+    const latsJson = await latsRsp.json();
+    const latsExercise = latsJson[randomNumber()];
+
+    workoutDay(middlebackExercise, trapsExercise, latsExercise, dayOfWeek);
   }
   // Wednesday - Legs
   else if (dayOfWeek === 3) {
-    fetch(`${exerciseURL}?muscle=quadriceps`, options)
-      .then((response) => response.json())
-      .then((json) => {
-        const quadsExercise = json[randomNumber()];
-        fetch(`${exerciseURL}?muscle=hamstrings`, options)
-          .then((response) => response.json())
-          .then((json) => {
-            const hamstringsExercise = json[randomNumber()];
-            fetch(`${exerciseURL}?muscle=calves`, options)
-              .then((response) => response.json())
-              .then((json) => {
-                const calvesExercise = json[randomNumber()];
-                workoutDay(
-                  quadsExercise,
-                  hamstringsExercise,
-                  calvesExercise,
-                  dayOfWeek
-                );
-              });
-          });
-      });
+    const quadsRsp = await fetch(`${exerciseURL}?muscle=quadriceps`, options);
+    const quadsJson = await quadsRsp.json();
+    const quadsExercise = quadsJson[randomNumber()];
+
+    const hamsRsp = await fetch(`${exerciseURL}?muscle=hamstrings`, options);
+    const hamsJson = await hamsRsp.json();
+    const hamstringsExercise = hamsJson[randomNumber()];
+
+    const calvesRsp = await fetch(`${exerciseURL}?muscle=calves`, options);
+    const calvesJson = await calvesRsp.json();
+    const calvesExercise = calvesJson[randomNumber()];
+
+    workoutDay(quadsExercise, hamstringsExercise, calvesExercise, dayOfWeek);
   }
   // Thursday - Cardio
   else if (dayOfWeek === 4) {
-    fetch(`${exerciseURL}?type=cardio`, options)
-      .then((response) => response.json())
-      .then((json) => {
-        const cardio1Exercise = json[randomNumber()];
-        fetch(`${exerciseURL}?type=cardio`, options)
-          .then((response) => response.json())
-          .then((json) => {
-            const cardio2Exercise = json[randomNumber()];
-            fetch(`${exerciseURL}?type=cardio`, options)
-              .then((response) => response.json())
-              .then((json) => {
-                const cardio3Exercise = json[randomNumber()];
-                workoutDay(
-                  cardio1Exercise,
-                  cardio2Exercise,
-                  cardio3Exercise,
-                  dayOfWeek
-                );
-              });
-          });
-      });
+    const cardioRsp1 = await fetch(`${exerciseURL}?type=cardio`, options);
+    const cardio1Json = await cardioRsp1.json();
+    const cardio1Exercise = cardio1Json[randomNumber()];
+
+    const cardioRsp2 = await fetch(`${exerciseURL}?type=cardio`, options);
+    const cardio2Json = await cardioRsp2.json();
+    const cardio2Exercise = cardio2Json[randomNumber()];
+
+    const cardioRsp3 = await fetch(`${exerciseURL}?type=cardio`, options);
+    const cardio3Json = await cardioRsp3.json();
+    const cardio3Exercise = cardio3Json[randomNumber()];
+
+    workoutDay(cardio1Exercise, cardio2Exercise, cardio3Exercise, dayOfWeek);
   }
+
   // Friday - Stretching
-  else if (dayOfWeek === 5) {
-    fetch(`${exerciseURL}?type=stretching`, options)
-      .then((response) => response.json())
-      .then((json) => {
-        const stretch1Exercise = json[randomNumber()];
-        fetch(`${exerciseURL}?type=stretching`, options)
-          .then((response) => response.json())
-          .then((json) => {
-            const stretch2Exercise = json[randomNumber()];
-            fetch(`${exerciseURL}?type=stretching`, options)
-              .then((response) => response.json())
-              .then((json) => {
-                const stretch3Exercise = json[randomNumber()];
-                workoutDay(
-                  stretch1Exercise,
-                  stretch2Exercise,
-                  stretch3Exercise,
-                  dayOfWeek
-                );
-              });
-          });
-      });
+  if (dayOfWeek === 5) {
+    const response1 = await fetch(`${exerciseURL}?type=stretching`, options);
+    const json1 = await response1.json();
+    const stretch1Exercise = json1[randomNumber()];
+
+    const response2 = await fetch(`${exerciseURL}?type=stretching`, options);
+    const json2 = await response2.json();
+    const stretch2Exercise = json2[randomNumber()];
+
+    const response3 = await fetch(`${exerciseURL}?type=stretching`, options);
+    const json3 = await response3.json();
+    const stretch3Exercise = json3[randomNumber()];
+
+    workoutDay(stretch1Exercise, stretch2Exercise, stretch3Exercise, dayOfWeek);
   }
 };
 
 // Display the Workout of the Day
+// FIX!! REST DAY NOT DISPLAYING
 const workoutDay = (exercise1, exercise2, exercise3, dayOfWeek) => {
   const exerciseEl = document.createElement("div");
   exerciseEl.classList.add("exercise-routine");
@@ -213,7 +192,7 @@ startBtn.addEventListener("click", () => screens[0].classList.add("up"));
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   screens[1].classList.add("up");
-  profileInfo();
+  //   profileInfo();
   getExercise();
 });
 
