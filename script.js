@@ -15,6 +15,7 @@ const goWeight = document.getElementById("go-weight");
 const form = document.querySelector("form");
 const quad1 = document.querySelector(".quad1");
 const quad3 = document.querySelector(".quad3");
+const quad4 = document.querySelector(".quad4");
 
 const exerciseRadios = document.querySelectorAll('input[name="exercise"]');
 const search = document.getElementById("search");
@@ -36,21 +37,20 @@ const getFood = () => {
     options
   )
     .then((response) => response.json())
-    .then((response) => console.log(response))
+    .then((response) => {
+      quad4.innerHTML = `${response.hits[1].fields.item_name} - ${response.hits[1].fields.nf_calories} Cal`;
+
+      console.log(response);
+    })
     .catch((err) => console.error(err));
 };
-
-foodBtn.addEventListener("click", (e) => {
-  getFood();
-  console.log(search.value);
-});
 
 const exerciseURL =
   "https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises";
 
 // Random Number between 0 -9
 const randomNumber = () => {
-  let randomNum = Math.floor(Math.random() * Object.length);
+  let randomNum = Math.floor(Math.random() * 10);
   return randomNum;
 };
 
@@ -231,17 +231,6 @@ const workoutDay = (exercise1, exercise2, exercise3, dayOfWeek) => {
   quad3.appendChild(exerciseEl);
 };
 
-// add up class to screen class to move the screen up and display a new screen
-startBtn.addEventListener("click", () => screens[0].classList.add("up"));
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  // Move screen up again
-  screens[1].classList.add("up");
-  //   profileInfo();
-  getExercise();
-});
-
 // BMI = weight(kg) * height(in meters)^2
 const calculateBMI = () => {
   const heightInMeters = feet.value * 0.3048 + inches.value * 0.0254;
@@ -273,3 +262,19 @@ const profileInfo = () => {
   profileEl.innerHTML = profileInnerHtml;
   quad1.appendChild(profileEl);
 };
+
+// add up class to screen class to move the screen up and display a new screen
+startBtn.addEventListener("click", () => screens[0].classList.add("up"));
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  // Move screen up again
+  screens[1].classList.add("up");
+  profileInfo();
+  getExercise();
+});
+
+foodBtn.addEventListener("click", (e) => {
+  getFood();
+  console.log(search.value);
+});

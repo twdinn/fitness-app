@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Fitness App - Sign Up</title>
+  </head>
+  <body>
+    <div class="sign-container">
+      <div class="sign-page">
+        <form class="sign-form">
+          <h1>Sign Up</h1>
+          <h5>Age</h5>
+          <input type="text" />
+          <h5>Current Weight(lbs)</h5>
+          <input type="text" />
+          <h5>Goal Weight(lbs)</h5>
+          <input type="password" r />
+          <h5>Exercise</h5>
+          <div class="exercises">
+            <input
+              type="radio"
+              id="weight-train"
+              name="exercise"
+              value="Weight Training"
+            />
+            <label class="label" for="weight-train">Weight Training</label>
+            <input
+              type="radio"
+              id="body-weight"
+              name="exercise"
+              value="Body Weight"
+            />
+            <label class="label" for="body-weight">Body Weight</label>
+          </div>
+
+          <button type="submit">Create Profile</button>
+        </form>
+
+        <p class="return-login">
+          Already Have a Profile? <a href="sign-in.html">Sign In</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

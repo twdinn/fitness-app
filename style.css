@@ -1,13 +1,157 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
-body {
+* {
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
-  overflow: hidden;
 }
 
-.screen {
+/* Starting screen size 350px */
+/* Start Page */
+
+.start-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.start-container > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.start-journey {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 95%;
+  height: 35%;
+  background-color: rgba(43, 45, 66, 0.9);
+  padding: 5px;
+  margin-bottom: 0.625rem;
+  border-radius: 30px;
+  position: absolute;
+}
+
+.start-journey > h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffff;
+}
+
+.start-journey > button > a {
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.start-journey > button > a:visited {
+  color: black;
+}
+
+.start-journey > button {
+  margin: 2rem;
+  height: 2.5rem;
+  width: 7.5rem;
+  border: 2px solid #ffff;
+  border-radius: 12px;
+  text-align: center;
+  background-color: #ffff;
+  cursor: pointer;
+}
+
+/* Login Page and Sign Up Pages */
+.sign-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #2b2d42;
+}
+.sign-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.sign-form {
+  display: flex;
+  flex-direction: column;
+  width: 18rem;
+  height: fit-content;
+  background-color: #ffff;
+  border-radius: 5px;
+  border: 2px solid #dddefa;
+  padding: 20px;
+  margin-top: 1.5rem;
+}
+
+.sign-form > h1 {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.sign-form > h5 {
+  margin-bottom: 0.3rem;
+}
+
+.sign-form > input {
+  height: 1.9rem;
+  margin-bottom: 0.63rem;
+  background-color: white;
+  width: 98%;
+  border: 2px solid #424359;
+}
+
+.sign-form > button {
+  background-color: #a6a7c1;
+  width: 100%;
+  height: 1.9rem;
+  border: 1px solid #424359;
+  margin-top: 0.63rem;
+  border-radius: 10px;
+  color: black;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.sign-up-btn {
+  background-color: #a6a7c1;
+  border-radius: 10px;
+  width: 50%;
+  height: 1.9rem;
+  border: 1px solid #424359;
+  margin-top: 0.63rem;
+}
+
+.sign-up-btn > a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+  color: black;
+}
+
+.sign-up-btn > a:visited {
+  color: black;
+}
+
+.return-login {
+  color: white;
+}
+
+.return-login > a:visited {
+  text-decoration: none;
+  color: white;
+}
+/* .screen {
   background-color: rgba(0, 0, 0, 0.6);
   transition: margin 0.5s ease-out;
 }
@@ -17,7 +161,7 @@ body {
 }
 
 /* HomePage*/
-.hompage {
+/* .hompage {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,11 +209,11 @@ body {
   text-align: center;
   margin-top: 10rem;
   cursor: pointer;
-}
+} */
 
 /* Details/Form */
 
-.details {
+/* .details {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -124,11 +268,11 @@ form {
 .exercise {
   display: flex;
   flex-direction: column;
-}
+} */
 
 /* Profile */
 
-.profile {
+/* .profile {
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -176,4 +320,4 @@ form {
 .quad4 {
   border-left: 1px solid #d90429;
   border-top: 1px solid #d90429;
-}
+}  */
