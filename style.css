@@ -151,6 +151,51 @@
   text-decoration: none;
   color: white;
 }
+
+/* Profile Page */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100vw;
+  height: 100vh;
+  background-color: #2b2d42;
+}
+
+.profile-container > h1 {
+  text-align: center;
+}
+
+.profile-menu {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 75vh;
+  background-color: #ffff;
+  border-top-left-radius: 70px;
+  border-top-right-radius: 70px;
+  font-size: 1.5rem;
+}
+
+.profile-info > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.info > h4 {
+  margin-left: 1rem;
+}
+
 /* .screen {
   background-color: rgba(0, 0, 0, 0.6);
   transition: margin 0.5s ease-out;
