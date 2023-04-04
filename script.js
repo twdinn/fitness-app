@@ -1,6 +1,8 @@
 // Fitness App
 // By: Tyler Dinn
 
+import Workout from "./workout";
+
 const screens = document.querySelectorAll(".screen");
 const startBtn = document.querySelector(".start-btn");
 const submitBtn = document.querySelector(".submitBtn");
@@ -49,10 +51,10 @@ const exerciseURL =
   "https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises";
 
 // Random Number between 0 -9
-const randomNumber = () => {
-  let randomNum = Math.floor(Math.random() * 10);
-  return randomNum;
-};
+// const randomNumber = () => {
+//   let randomNum = Math.floor(Math.random() * 10);
+//   return randomNum;
+// };
 
 // Get Exercises based on day of Week
 const getExercise = async () => {

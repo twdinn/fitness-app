@@ -10,7 +10,7 @@
   --primary-text-color: #333333;
   --form-background: #ffffff;
   --button-background: #337ab7;
-  --main-background: #4682b4;
+  --main-background: #233237;
   --border-color: #cccccc;
 }
 
@@ -166,7 +166,7 @@
   font-size: 3rem;
 }
 
-.profile-menu {
+.nav {
   display: flex;
   align-self: flex-end;
   margin: 1rem;
@@ -188,6 +188,40 @@
 
 td {
   padding-left: 1.5rem;
+}
+
+/* Workout Page */
+
+.workout-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--main-background);
+}
+
+.workout-greeting {
+  text-align: center;
+}
+
+#workout-day {
+  margin: 5rem;
+}
+
+.workout-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  height: fit-content;
+  background-color: var(--form-background);
+  border: 1px solid var(--border-color);
+  padding: 0.31rem;
+  margin-bottom: 0.625rem;
+  border-radius: 30px;
 }
 
 /* .profile-menu:hover .dropdown-menu {
