@@ -1,9 +1,9 @@
 class Workout {
-  constructor(muscle) {
+  constructor(muscle, sets, reps) {
     // this.name = name;
     // this.description = description;
-    // this.sets = sets;
-    // this.reps = reps;
+    this.sets = sets;
+    this.reps = reps;
     // this.category = category;
     this.muscle = muscle;
   }
@@ -17,22 +17,26 @@ class Workout {
       },
     };
 
-    fetch(
-      `https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises?muscle=${this.muscle}`,
-      options
-    )
+    fetch(`${exerciseURL}?muscle=${this.muscle}`, options)
       .then((response) => response.json())
-      .then((response) => console.log(response[randomNumber()].name))
+      .then((response) =>
+        console.log(
+          `${response[randomNumber(response)].name}, Sets: ${
+            this.sets
+          }, Reps: ${this.reps}`
+        )
+      )
       .catch((err) => console.error(err));
   };
 }
 
-const randomNumber = () => {
-  let randomNum = Math.floor(Math.random() * 10);
+const randomNumber = (data) => {
+  let randomNum = Math.floor(Math.random() * data.length);
+  console.log(randomNum);
   return randomNum;
 };
 
-// const exerciseURL =
-//   "https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises";
+const exerciseURL =
+  "https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises";
 
-const exercise = new Workout("chest").getExercise();
+const exercise = new Workout("biceps", 3, 10).getExercise();
