@@ -64,8 +64,8 @@ const profileInfo = () => {
   profileBMI.innerHTML = bmi;
   profileCalories.innerHTML = calories;
 
-  // signupPage.classList.add("hidden");
-  // profilePage.classList.remove("hidden");
+  signupPage.classList.add("hidden");
+  profilePage.classList.remove("hidden");
 };
 
 // Save User Info to Local Storage and Redirect to Profile page and call profileInfo function
@@ -112,7 +112,7 @@ document.addEventListener("click", function (event) {
 // Start Button
 startBtn.addEventListener("click", () => {
   startPage.classList.add("hidden");
-  profilePage.classList.remove("hidden");
+  signupPage.classList.remove("hidden");
 });
 
 // Workout Page
@@ -215,7 +215,7 @@ const stretchingDay = () => {
 };
 
 const exerciseDay = async () => {
-  const dayOfWeek = 3;
+  const dayOfWeek = new Date().getDay();
   let title;
   let promises = [];
 
