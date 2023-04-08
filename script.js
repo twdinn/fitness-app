@@ -174,46 +174,89 @@ class Exercise {
   };
 }
 
+const pushDay = () => {
+  return [
+    new Exercise("chest", 3, 8),
+    new Exercise("triceps", 3, 12),
+    new Exercise("shoulders", 3, 12),
+  ];
+};
+
+const pullDay = () => {
+  return [
+    new Exercise("lower_back", 3, 8),
+    new Exercise("traps", 3, 8),
+    new Exercise("biceps", 3, 12),
+  ];
+};
+
+const legDay = () => {
+  return [
+    new Exercise("quadriceps", 3, 8),
+    new Exercise("hamstrings", 3, 8),
+    new Exercise("calves", 3, 12),
+  ];
+};
+
+const cardioDay = () => {
+  return [
+    new Exercise("cardio", 3, 8),
+    new Exercise("cardio", 3, 8),
+    new Exercise("cardio", 3, 12),
+  ];
+};
+
+const stretchingDay = () => {
+  return [
+    new Exercise("stretching", 3, 8),
+    new Exercise("stretching", 3, 8),
+    new Exercise("stretching", 3, 12),
+  ];
+};
+
 const exerciseDay = async () => {
-  const dayOfWeek = 1;
+  const dayOfWeek = 3;
   let title;
   let promises = [];
 
   if (dayOfWeek === 0 || dayOfWeek === 6) {
     title = "Rest Day";
-    promises = [null, null, null];
+    return Promise.resolve({ title });
   } else if (dayOfWeek === 1) {
     title = "Push Day";
-    promises = [
-      new Exercise("chest", 3, 8),
-      new Exercise("triceps", 3, 12),
-      new Exercise("shoulders", 3, 12),
-    ];
+    promises = pushDay();
   } else if (dayOfWeek === 2) {
     title = "Pull Day";
-    promises = [
-      new Exercise("lower_back", 3, 8),
-      new Exercise("traps", 3, 8),
-      new Exercise("biceps", 3, 12),
-    ];
+    promises = pullDay();
   } else if (dayOfWeek === 3) {
     title = "Leg Day";
-    promises = [
-      new Exercise("quadriceps", 3, 8),
-      new Exercise("hamstrings", 3, 8),
-      new Exercise("calves", 3, 12),
-    ];
+    promises = legDay();
+  } else if (dayOfWeek === 4) {
+    title = "Cardio Day";
+    promises = cardioDay();
+  } else if (dayOfWeek === 5) {
+    title = "Stretching Day";
+    promises = stretchingDay();
   } else {
-    console.error("Error");
+    console.error(error);
   }
 
-  return await Promise.all(promises).then((exercises) => {
-    return Promise.resolve({
-      exercise1: exercises[0].getExerciseByMuscle(),
-      exercise2: exercises[1].getExerciseByMuscle(),
-      exercise3: exercises[2].getExerciseByMuscle(),
-      title,
-    });
+  return Promise.all(promises).then((exercises) => {
+    if (dayOfWeek === 4 || dayOfWeek === 5) {
+      return Promise.resolve({
+        exercise1: exercises[0].getExerciseByType(),
+        exercise2: exercises[1].getExerciseByType(),
+        exercise3: exercises[2].getExerciseByType(),
+        title,
+      });
+    } else {
+      return Promise.resolve({
+        exercise1: exercises[0].getExerciseByMuscle(),
+        exercise2: exercises[1].getExerciseByMuscle(),
+        exercise3: exercises[2].getExerciseByMuscle(),
+        title,
+      });
+    }
   });
 };
 
@@ -232,15 +275,23 @@ const displayWorkout = async () => {
   try {
     const results = await exerciseDay();
     workoutDay.innerHTML = results.title;
-    exercise1Name.innerHTML = await results.exercise1.then((res) => res.name);
-    exercise1Sets.innerHTML = await results.exercise1.then((res) => res.sets);
-    exercise1Reps.innerHTML = await results.exercise1.then((res) => res.reps);
-    exercise2Name.innerHTML = await results.exercise2.then((res) => res.name);
-    exercise2Sets.innerHTML = await results.exercise2.then((res) => res.sets);
-    exercise2Reps.innerHTML = await results.exercise2.then((res) => res.reps);
-    exercise3Name.innerHTML = await results.exercise3.then((res) => res.name);
-    exercise3Sets.innerHTML = await results.exercise3.then((res) => res.sets);
-    exercise3Reps.innerHTML = await results.exercise3.then((res) => res.reps);
+    if (
+      results.exercise1 === undefined ||
+      results.exercise2 === undefined ||
+      results.exercise3 === undefined
+    ) {
+      return null;
+    } else {
+      exercise1Name.innerHTML = await results.exercise1.then((res) => res.name);
+      exercise1Sets.innerHTML = await results.exercise1.then((res) => res.sets);
+      exercise1Reps.innerHTML = await results.exercise1.then((res) => res.reps);
+      exercise2Name.innerHTML = await results.exercise2.then((res) => res.name);
+      exercise2Sets.innerHTML = await results.exercise2.then((res) => res.sets);
+      exercise2Reps.innerHTML = await results.exercise2.then((res) => res.reps);
+      exercise3Name.innerHTML = await results.exercise3.then((res) => res.name);
+      exercise3Sets.innerHTML = await results.exercise3.then((res) => res.sets);
+      exercise3Reps.innerHTML = await results.exercise3.then((res) => res.reps);
+    }
   } catch (error) {
     console.error(error);
   }
