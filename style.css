@@ -155,7 +155,6 @@
 }
 
 .profile-container > h1 {
-  color: var(--secondary-text-color);
   text-align: center;
   font-size: 3rem;
 }
@@ -215,6 +214,11 @@ td {
   padding: 0.31rem;
   margin-bottom: 0.625rem;
   border-radius: 30px;
+}
+
+#profile-name,
+.workout-greeting {
+  color: var(--secondary-text-color);
 }
 
 .hidden {
