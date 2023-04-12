@@ -311,4 +311,6 @@ const getFood = async () => {
   const data = await response.json();
   return data;
 };
-console.log(getFood());
+getFood().then((data) => {
+  console.log(data.food.breakfast[0].name);
+});
