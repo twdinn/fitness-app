@@ -251,6 +251,8 @@ ul {
   padding: 0.31rem;
   margin-bottom: 0.625rem;
   border-radius: 30px;
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 
 .workout-info th {
@@ -290,13 +292,38 @@ ul {
   padding: 0.31rem;
   margin-bottom: 0.625rem;
   border-radius: 30px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.breakfast-title {
-  display: flex;
+.meal-info th {
+  padding-right: 0.6rem;
+}
 
-  /* justify-content: center;
-  align-items: center; */
+.meal-info td {
+  padding-right: 0.6rem;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.totals {
+  display: flex;
+  justify-content: flex-end;
+  color: var(--secondary-text-color);
+}
+
+.total-cal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 0.6rem;
+}
+
+.total-protein {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 2rem;
 }
 
 .hidden {

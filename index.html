@@ -19,7 +19,7 @@
         <a id="start-btn">Start</a>
       </div>
     </section>
-    <section class="sign-container page hidden" id="signup-page">
+    <section class="sign-container hidden" id="signup-page">
       <div class="sign-page">
         <form class="sign-form" id="sign-form">
           <h1>Sign Up</h1>
@@ -41,7 +41,7 @@
         </form>
       </div>
     </section>
-    <section class="profile-container page hidden" id="profile-page">
+    <section class="profile-container hidden" id="profile-page">
       <div class="nav">
         <ul>
           <li><a id="workout-nav-link" href="#workout-page">Workout</a></li>
@@ -80,7 +80,7 @@
         </table>
       </div>
     </section>
-    <section class="workout-container page hidden" id="workout-page">
+    <section class="workout-container hidden" id="workout-page">
       <div class="nav">
         <ul>
           <li><a id="profile-nav-link" href="#profile-page">Profile</a></li>
@@ -117,7 +117,7 @@
         </table>
       </div>
     </section>
-    <section class="food-container page hidden" id="food-page">
+    <section class="food-container hidden" id="food-page">
       <div class="nav">
         <ul>
           <li><a id="profile-nav-link" href="#profile-page">Profile</a></li>
@@ -126,47 +126,42 @@
       </div>
       <h1 id="food-title">Todays Food Suggestions</h1>
 
-      <div class="meal-info">
-        <table>
+      <div>
+        <table class="meal-info">
           <tr>
-            <td>Breakfast:</td>
+            <th>Meal</th>
+            <th>Name</th>
+            <th>Calories</th>
+            <th>Protein</th>
+          </tr>
+          <tr>
+            <td>Breakfast</td>
             <td id="break-name"></td>
-
-            <td>Calories:</td>
             <td id="break-cal"></td>
-
-            <td>Protein:</td>
             <td id="break-protein"></td>
           </tr>
           <tr>
-            <td>Lunch:</td>
-            <td id="lunch-name">Eggs</td>
-
-            <td>Calories:</td>
-            <td id="lunch-cal">200 cal</td>
-
-            <td>Protein:</td>
-            <td id="lunch-protein">10g</td>
+            <td>Lunch</td>
+            <td id="lunch-name"></td>
+            <td id="lunch-cal"></td>
+            <td id="lunch-protein"></td>
           </tr>
           <tr>
-            <td>Supper:</td>
-
-            <td id="supper-name">Eggs</td>
-
-            <td>Calories:</td>
-            <td id="supper-cal">200 cal</td>
-
-            <td>Protein:</td>
-            <td id="supper-protein">10g</td>
+            <td>Supper</td>
+            <td id="supper-name"></td>
+            <td id="supper-cal"></td>
+            <td id="supper-protein"></td>
           </tr>
         </table>
-        <div class="total-cal">
-          <h4>Total Calories:</h4>
-          <h6 id="total-cal"></h6>
-        </div>
-        <div class="total-protein">
-          <h4>Total Protein:</h4>
-          <h6 id="total-protein"></h6>
+        <div class="totals">
+          <div class="total-cal">
+            <h4>Total Calories:</h4>
+            <h6 id="total-cal"></h6>
+          </div>
+          <div class="total-protein">
+            <h4>Total Protein:</h4>
+            <h6 id="total-protein"></h6>
+          </div>
         </div>
       </div>
     </section>

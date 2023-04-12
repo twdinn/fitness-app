@@ -347,9 +347,17 @@ const displayFood = async () => {
       parseInt(breakCal.innerHTML) +
       parseInt(lunchCal.innerHTML) +
       parseInt(supperCal.innerHTML);
+
+    totalProtein.innerHTML = `${
+      parseInt(breakProtein.innerHTML) +
+      parseInt(lunchProtein.innerHTML) +
+      parseInt(supperProtein.innerHTML)
+    }g`;
   } catch (error) {
     console.error(error);
   }
 };
 
 displayFood();
+
+// ------------  Google Map ------------
