@@ -304,13 +304,52 @@ displayWorkout();
 
 // ------------  Food Page ------------
 
-const foodURL = "https://api.npoint.io/4139ad030354aa30cda7";
+const foodURL = "https://api.npoint.io/8c42d61c32ddbde2d647";
 
 const getFood = async () => {
   const response = await fetch(foodURL);
   const data = await response.json();
   return data;
 };
-getFood().then((data) => {
-  console.log(data.food.breakfast[0].name);
-});
+
+const displayFood = async () => {
+  const breakName = document.getElementById("break-name");
+  const breakCal = document.getElementById("break-cal");
+  const breakProtein = document.getElementById("break-protein");
+  const lunchName = document.getElementById("lunch-name");
+  const lunchCal = document.getElementById("lunch-cal");
+  const lunchProtein = document.getElementById("lunch-protein");
+  const supperName = document.getElementById("supper-name");
+  const supperCal = document.getElementById("supper-cal");
+  const supperProtein = document.getElementById("supper-protein");
+  const totalCal = document.getElementById("total-cal");
+  const totalProtein = document.getElementById("total-protein");
+
+  try {
+    const results = await getFood();
+    const randomIndexBreak = randomNumber(results.food.breakfast);
+    const randomIndexLunch = randomNumber(results.food.lunch);
+    const randomIndexSupper = randomNumber(results.food.supper);
+
+    breakName.innerHTML = results.food.breakfast[randomIndexBreak].name;
+    breakCal.innerHTML = results.food.breakfast[randomIndexBreak].calories;
+    breakProtein.innerHTML = `${results.food.breakfast[randomIndexBreak].protein}g`;
+
+    lunchName.innerHTML = results.food.lunch[randomIndexLunch].name;
+    lunchCal.innerHTML = results.food.lunch[randomIndexLunch].calories;
+    lunchProtein.innerHTML = `${results.food.lunch[randomIndexLunch].protein}g`;
+
+    supperName.innerHTML = results.food.supper[randomIndexSupper].name;
+    supperCal.innerHTML = results.food.supper[randomIndexSupper].calories;
+    supperProtein.innerHTML = `${results.food.supper[randomIndexSupper].protein}g`;
+
+    totalCal.innerHTML =
+      parseInt(breakCal.innerHTML) +
+      parseInt(lunchCal.innerHTML) +
+      parseInt(supperCal.innerHTML);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+displayFood();
