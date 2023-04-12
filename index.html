@@ -13,7 +13,7 @@
   </head>
   <body>
     <section class="start-container page" id="start-page">
-      <img src="background-img.jpg" />
+      <img src="background-img2.jpg" />
       <div class="start-journey">
         <h1>Your Fitness Journey Starts Here</h1>
         <a id="start-btn">Start</a>
@@ -44,7 +44,6 @@
     <section class="profile-container page hidden" id="profile-page">
       <div class="nav">
         <ul>
-          <li><a id="profile-nav-link" href="#profile-page">Profile</a></li>
           <li><a id="workout-nav-link" href="#workout-page">Workout</a></li>
           <li><a id="food-nav-link" href="#food-page">Food</a></li>
         </ul>
@@ -55,28 +54,28 @@
       <div class="profile-info">
         <table>
           <tr>
-            <td><h3>Age:</h3></td>
-            <td><h4 id="profile-age"></h4></td>
+            <td>Age:</td>
+            <td id="profile-age"></td>
           </tr>
           <tr>
-            <td><h3>Height:</h3></td>
-            <td><h4 id="profile-height"></h4></td>
+            <td>Height:</td>
+            <td id="profile-height"></td>
           </tr>
           <tr>
-            <td><h3>Weight:</h3></td>
-            <td><h4 id="profile-weight"></h4></td>
+            <td>Weight:</td>
+            <td id="profile-weight"></td>
           </tr>
           <tr>
-            <td><h3>Goal Weight:</h3></td>
-            <td><h4 id="profile-goal"></h4></td>
+            <td>Goal Weight</td>
+            <td id="profile-goal"></td>
           </tr>
           <tr>
-            <td><h3>BMI:</h3></td>
-            <td><h4 id="bmi"></h4></td>
+            <td>BMI:</td>
+            <td id="bmi"></td>
           </tr>
           <tr>
-            <td><h3>Calorie Intake:</h3></td>
-            <td><h4 id="cal-intake"></h4></td>
+            <td>Calorie Intake:</td>
+            <td id="cal-intake"></td>
           </tr>
         </table>
       </div>
@@ -85,7 +84,6 @@
       <div class="nav">
         <ul>
           <li><a id="profile-nav-link" href="#profile-page">Profile</a></li>
-          <li><a id="workout-nav-link" href="#workout-page">Workout</a></li>
           <li><a id="food-nav-link" href="#food-page">Food</a></li>
         </ul>
       </div>
@@ -119,15 +117,61 @@
         </table>
       </div>
     </section>
-    <section class="hidden" id="food-page">
+    <section class="food-container page hidden" id="food-page">
       <div class="nav">
         <ul>
           <li><a id="profile-nav-link" href="#profile-page">Profile</a></li>
           <li><a id="workout-nav-link" href="#workout-page">Workout</a></li>
-          <li><a id="food-nav-link" href="#food-page">Food</a></li>
         </ul>
       </div>
-      <h1>food</h1>
+      <h1 id="food-title">Todays Food Suggestions</h1>
+
+      <div class="meal-info">
+        <table>
+          <th class="breakfast-title">BreakFast:</th>
+          <tr>
+            <td id="food-name">Eggs</td>
+          </tr>
+
+          <tr>
+            <th>Calories:</th>
+            <td id="food-cal">200 cal</td>
+          </tr>
+          <tr>
+            <th>Protein:</th>
+            <td id="food-protein">10g</td>
+          </tr>
+          <tr>
+            <th>Lunch:</th>
+            <td id="food-name">Eggs</td>
+
+            <th>Calories:</th>
+            <td id="food-cal">200 cal</td>
+
+            <th>Protein:</th>
+            <td id="food-protein">10g</td>
+          </tr>
+          <tr>
+            <th>Supper:</th>
+
+            <td id="food-name">Eggs</td>
+
+            <th>Calories:</th>
+            <td id="food-cal">200 cal</td>
+
+            <th>Protein:</th>
+            <td id="food-protein">10g</td>
+          </tr>
+        </table>
+        <div class="tot-calories">
+          <h4>Total Calories:</h4>
+          <h6 id="tot-calories"></h6>
+        </div>
+        <div class="tot-calories">
+          <h4>Total Protein:</h4>
+          <h6 id="tot-protein"></h6>
+        </div>
+      </div>
     </section>
 
     <script src="script.js"></script>

@@ -22,14 +22,23 @@ const currWeight = document.getElementById("curr-weight");
 const goWeight = document.getElementById("go-weight");
 const form = document.getElementById("sign-form");
 
-const FEET_TO_METERS = 0.3048;
-const INCHES_TO_METERS = 0.0254;
-const POUNDS_TO_KG = 0.453592;
+// ------------  Start Page ------------
+startBtn.addEventListener("click", () => {
+  startPage.classList.add("hidden");
+  foodPage.classList.remove("hidden");
+});
+
+// ------------  Profile Page ------------
+
+const feetToMeters = 0.3048;
+const inchesToMeters = 0.0254;
+const poundsToKg = 0.453592;
+
 // BMI = weight(kg) * height(in meters)^2
 const calculateBMI = () => {
   const heightInMeters =
-    feet.value * FEET_TO_METERS + inches.value * INCHES_TO_METERS;
-  const weightInKg = currWeight.value * POUNDS_TO_KG;
+    feet.value * feetToMeters + inches.value * inchesToMeters;
+  const weightInKg = currWeight.value * poundsToKg;
   const bmi = (weightInKg / Math.pow(heightInMeters, 2)).toFixed(1);
 
   return bmi;
@@ -109,13 +118,7 @@ document.addEventListener("click", function (event) {
   }
 });
 
-// Start Button
-startBtn.addEventListener("click", () => {
-  startPage.classList.add("hidden");
-  signupPage.classList.remove("hidden");
-});
-
-// Workout Page
+// ------------  Workout Page ------------
 const randomNumber = (data) => {
   let randomNum = Math.floor(Math.random() * data.length);
   return randomNum;
@@ -215,7 +218,7 @@ const stretchingDay = () => {
 };
 
 const exerciseDay = async () => {
-  const dayOfWeek = new Date().getDay();
+  const dayOfWeek = 1;
   let title;
   let promises = [];
 
@@ -298,3 +301,14 @@ const displayWorkout = async () => {
 };
 
 displayWorkout();
+
+// ------------  Food Page ------------
+
+const foodURL = "https://api.npoint.io/4139ad030354aa30cda7";
+
+const getFood = async () => {
+  const response = await fetch(foodURL);
+  const data = await response.json();
+  return data;
+};
+console.log(getFood());
