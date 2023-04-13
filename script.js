@@ -127,12 +127,37 @@ const randomNumber = (data) => {
 const exerciseURL =
   "https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises";
 
+const options = {
+  method: "GET",
+  headers: {
+    "X-RapidAPI-Key": "031f90f2bamsh08f92af0c6fe80cp1d5a1bjsndaa3aea41ea9",
+    "X-RapidAPI-Host": "exercises-by-api-ninjas.p.rapidapi.com",
+  },
+};
+
 class Exercise {
   constructor(muscle, sets, reps) {
     this.muscle = muscle;
     this.sets = sets;
     this.reps = reps;
   }
+
+  getExercise = async (type = 'muscle') =>
+  {
+    return await fetch(`${exerciseURL}?${type}=${this.muscle}`,
+      options
+    ).then(res => res.json())
+    .then( ex_array =>
+      {
+        return {
+          name: ex_array[randomNumber(ex_array)].name,
+          sets: this.sets,
+          reps: this.reps
+        }
+      }
+    ).catch(err => console.log(err))
+  };
+
 
   getExerciseByMuscle = async () => {
     const options = {
@@ -245,21 +270,14 @@ const exerciseDay = async () => {
   }
 
   return Promise.all(promises).then((exercises) => {
-    if (dayOfWeek === 4 || dayOfWeek === 5) {
-      return Promise.resolve({
-        exercise1: exercises[0].getExerciseByType(),
-        exercise2: exercises[1].getExerciseByType(),
-        exercise3: exercises[2].getExerciseByType(),
-        title,
-      });
-    } else {
-      return Promise.resolve({
-        exercise1: exercises[0].getExerciseByMuscle(),
-        exercise2: exercises[1].getExerciseByMuscle(),
-        exercise3: exercises[2].getExerciseByMuscle(),
-        title,
-      });
-    }
+    const type = (dayOfWeek === 4 || dayOfWeek === 5) ? 'type' : 'muscle'
+
+    return Promise.resolve({
+      exercise1: exercises[0].getExercise(),
+      exercise2: exercises[1].getExercise(),
+      exercise3: exercises[2].getExercise(),
+      title,
+    });
   });
 };
 
