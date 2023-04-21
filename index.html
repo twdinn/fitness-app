@@ -12,13 +12,33 @@
     <title>Fitness App</title>
   </head>
   <body>
-    <section class="start-container page" id="start-page">
+    <!-- Star Page -->
+    <nav class="nav hidden" id="nav">
+      <div class="icon">
+        <img src="exercise.png" alt="fitness-icon" />
+      </div>
+      <a href="#" class="toggle-btn" id="toggle-btn">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <ul>
+          <li><a id="profile-nav-link" href="#profile-page">Home</a></li>
+          <li><a id="workout-nav-link" href="#workout-page">Workout</a></li>
+          <li><a id="food-nav-link" href="#food-page">Food</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Start Page -->
+    <section class="start-container" id="start-page">
       <img src="background-img2.jpg" />
       <div class="start-journey">
         <h1>Your Fitness Journey Starts Here</h1>
         <a id="start-btn">Start</a>
       </div>
     </section>
+    <!-- Sign In Page -->
     <section class="sign-container hidden" id="signup-page">
       <div class="sign-page">
         <form class="sign-form" id="sign-form">
@@ -41,127 +61,145 @@
         </form>
       </div>
     </section>
-    <section class="profile-container hidden" id="profile-page">
-      <div class="nav">
-        <ul>
-          <li><a id="workout-nav-link" href="#workout-page">Workout</a></li>
-          <li><a id="food-nav-link" href="#food-page">Food</a></li>
-        </ul>
-      </div>
-
+    <!-- Profile Page -->
+    <section class="container hidden" id="profile-page">
       <h1 id="profile-name"></h1>
 
-      <div class="profile-info">
-        <table>
-          <tr>
-            <td>Age:</td>
-            <td id="profile-age"></td>
-          </tr>
-          <tr>
-            <td>Height:</td>
-            <td id="profile-height"></td>
-          </tr>
-          <tr>
-            <td>Weight:</td>
-            <td id="profile-weight"></td>
-          </tr>
-          <tr>
-            <td>Goal Weight</td>
-            <td id="profile-goal"></td>
-          </tr>
-          <tr>
-            <td>BMI:</td>
-            <td id="bmi"></td>
-          </tr>
-          <tr>
-            <td>Calorie Intake:</td>
-            <td id="cal-intake"></td>
-          </tr>
-        </table>
+      <div class="info" id="profile-info">
+        <div class="profile-question">
+          <h2>Age:</h2>
+          <h2>Height:</h2>
+          <h2>Weight:</h2>
+          <h2>Goal Weight:</h2>
+          <h2>BMI:</h2>
+          <h2>Calorie Intake:</h2>
+        </div>
+        <div class="profile-answer">
+          <p id="profile-age"></p>
+          <p id="profile-height"></p>
+          <p id="profile-weight"></p>
+          <p id="profile-goal"></p>
+          <p id="bmi"></p>
+          <p id="cal-intake"></p>
+        </div>
       </div>
     </section>
-    <section class="workout-container hidden" id="workout-page">
-      <div class="nav">
-        <ul>
-          <li><a id="profile-nav-link" href="#profile-page">Profile</a></li>
-          <li><a id="food-nav-link" href="#food-page">Food</a></li>
-        </ul>
-      </div>
+    <!-- Workout Page -->
+    <section class="container hidden" id="workout-page">
       <div class="workout-greeting">
         <h1>Todays Workout</h1>
         <h1 id="workout-day"></h1>
       </div>
 
-      <div class="workout-info">
-        <table>
-          <tr>
-            <th>Exercise</th>
-            <th>Sets</th>
-            <th>Reps</th>
-          </tr>
-          <tr>
-            <td id="exercise1-name"></td>
-            <td id="exercise1-sets"></td>
-            <td id="exercise1-reps"></td>
-          </tr>
-          <tr>
-            <td id="exercise2-name"></td>
-            <td id="exercise2-sets"></td>
-            <td id="exercise2-reps"></td>
-          </tr>
-          <tr>
-            <td id="exercise3-name"></td>
-            <td id="exercise3-sets"></td>
-            <td id="exercise3-reps"></td>
-          </tr>
-        </table>
+      <div class="info workout-info" id="workout-info">
+        <div class="exercises">
+          <div class="workout-title1">
+            <h2>Exercise</h2>
+          </div>
+          <div class="ex-name-row1">
+            <p id="exercise1-name"></p>
+          </div>
+          <div class="ex-name-row2">
+            <p id="exercise2-name"></p>
+          </div>
+          <div class="ex-name-row3">
+            <p id="exercise3-name"></p>
+          </div>
+        </div>
+        <div class="sets">
+          <div class="workout-title2">
+            <h2>Sets</h2>
+          </div>
+          <div class="ex-set-row1">
+            <p id="exercise1-sets"></p>
+          </div>
+          <div class="ex-set-row2">
+            <p id="exercise2-sets"></p>
+          </div>
+          <div class="ex-set-row3">
+            <p id="exercise3-sets"></p>
+          </div>
+        </div>
+        <div class="reps">
+          <div class="workout-title3">
+            <h2>Reps</h2>
+          </div>
+          <div class="ex-rep-row1">
+            <p id="exercise1-reps"></p>
+          </div>
+          <div class="ex-rep-row2">
+            <p id="exercise2-reps"></p>
+          </div>
+          <div class="ex-rep-row3">
+            <p id="exercise3-reps"></p>
+          </div>
+        </div>
       </div>
     </section>
-    <section class="food-container hidden" id="food-page">
-      <div class="nav">
-        <ul>
-          <li><a id="profile-nav-link" href="#profile-page">Profile</a></li>
-          <li><a id="workout-nav-link" href="#workout-page">Workout</a></li>
-        </ul>
-      </div>
+    <!-- Food Page -->
+    <section class="container hidden" id="food-page">
       <h1 id="food-title">Todays Food Suggestions</h1>
+      <div class="info food-info" id="food-info">
+        <div class="food-title">
+          <h2>Meal</h2>
+        </div>
+        <div class="food-title1">
+          <h3>Breakfast</h3>
+        </div>
+        <div class="food-title2">
+          <h3>Lunch</h3>
+        </div>
+        <div class="food-title3">
+          <h3>Supper</h3>
+        </div>
 
-      <div>
-        <table class="meal-info">
-          <tr>
-            <th>Meal</th>
-            <th>Name</th>
-            <th>Calories</th>
-            <th>Protein</th>
-          </tr>
-          <tr>
-            <td>Breakfast</td>
-            <td id="break-name"></td>
-            <td id="break-cal"></td>
-            <td id="break-protein"></td>
-          </tr>
-          <tr>
-            <td>Lunch</td>
-            <td id="lunch-name"></td>
-            <td id="lunch-cal"></td>
-            <td id="lunch-protein"></td>
-          </tr>
-          <tr>
-            <td>Supper</td>
-            <td id="supper-name"></td>
-            <td id="supper-cal"></td>
-            <td id="supper-protein"></td>
-          </tr>
-        </table>
-        <div class="totals">
-          <div class="total-cal">
-            <h4>Total Calories:</h4>
-            <h6 id="total-cal"></h6>
-          </div>
-          <div class="total-protein">
-            <h4>Total Protein:</h4>
-            <h6 id="total-protein"></h6>
-          </div>
+        <div class="meal-name">
+          <h2>Name</h2>
+        </div>
+        <div class="break-name">
+          <p id="break-name"></p>
+        </div>
+        <div class="lunch-name">
+          <p id="lunch-name"></p>
+        </div>
+        <div class="supper-name">
+          <p id="supper-name"></p>
+        </div>
+
+        <div class="meal-cal">
+          <h2>Calories</h2>
+        </div>
+        <div class="break-cal">
+          <p id="break-cal"></p>
+        </div>
+        <div class="lunch-cal">
+          <p id="lunch-cal"></p>
+        </div>
+        <div class="supper-cal">
+          <p id="supper-cal"></p>
+        </div>
+
+        <div class="meal-pro">
+          <h2>Protein</h2>
+        </div>
+        <div class="break-pro">
+          <p id="break-protein"></p>
+        </div>
+        <div class="lunch-pro">
+          <p id="lunch-protein"></p>
+        </div>
+        <div class="supper-pro">
+          <p id="supper-protein"></p>
+        </div>
+      </div>
+      <div class="totals">
+        <div class="total-cal">
+          <h4>Total Calories:</h4>
+          <h6 id="total-cal"></h6>
+        </div>
+        <div class="total-protein">
+          <h4>Total Protein:</h4>
+          <h6 id="total-protein"></h6>
         </div>
       </div>
     </section>

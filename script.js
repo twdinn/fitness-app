@@ -1,18 +1,60 @@
 // Fitness App
 // By: Tyler Dinn
 
-const startBtn = document.getElementById("start-btn");
-
 const startPage = document.getElementById("start-page");
 const signupPage = document.getElementById("signup-page");
 const profilePage = document.getElementById("profile-page");
 const workoutPage = document.getElementById("workout-page");
 const foodPage = document.getElementById("food-page");
 
+// ------------  Start Page ------------
+const startBtn = document.getElementById("start-btn");
+
+startBtn.addEventListener("click", () => {
+  startPage.classList.add("hidden");
+  signupPage.classList.remove("hidden");
+});
+
+// ------------  Navbar ------------------
+
 const profileLink = document.getElementById("profile-nav-link");
 const workoutLink = document.getElementById("workout-nav-link");
 const foodLink = document.getElementById("food-nav-link");
 
+const toggleBtn = document.getElementById("toggle-btn");
+const navLinks = document.getElementById("nav-links");
+const navbarLinks = [profileLink, workoutLink, foodLink];
+
+navbarLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    switch (link.id) {
+      case "profile-nav-link":
+        profilePage.classList.remove("hidden");
+        workoutPage.classList.add("hidden");
+        foodPage.classList.add("hidden");
+
+        break;
+      case "workout-nav-link":
+        workoutPage.classList.remove("hidden");
+        profilePage.classList.add("hidden");
+        foodPage.classList.add("hidden");
+        break;
+      case "food-nav-link":
+        foodPage.classList.remove("hidden");
+        profilePage.classList.add("hidden");
+        workoutPage.classList.add("hidden");
+        break;
+    }
+
+    navLinks.classList.toggle("active");
+  });
+});
+
+toggleBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+// ------------  Profile Page ------------
 const createBtn = document.getElementById("create-btn");
 const usersName = document.getElementById("name");
 const age = document.getElementById("age");
@@ -21,14 +63,6 @@ const inches = document.getElementById("inches");
 const currWeight = document.getElementById("curr-weight");
 const goWeight = document.getElementById("go-weight");
 const form = document.getElementById("sign-form");
-
-// ------------  Start Page ------------
-startBtn.addEventListener("click", () => {
-  startPage.classList.add("hidden");
-  foodPage.classList.remove("hidden");
-});
-
-// ------------  Profile Page ------------
 
 const feetToMeters = 0.3048;
 const inchesToMeters = 0.0254;
@@ -75,7 +109,22 @@ const profileInfo = () => {
 
   signupPage.classList.add("hidden");
   profilePage.classList.remove("hidden");
+  nav.classList.remove("hidden");
 };
+
+// Save User Info to Local Storage and Redirect to Profile page and call profileInfo function
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  localStorage.setItem("Name", usersName.value);
+  localStorage.setItem("Age", age.value);
+  localStorage.setItem("Height", feet.value + " ft. " + inches.value + " in.");
+  localStorage.setItem("Weight", currWeight.value + " lbs.");
+  localStorage.setItem("Goal Weight", goWeight.value + " lbs.");
+
+  profileInfo();
+  nav.classList.remove("hidden");
+});
 
 // Save User Info to Local Storage and Redirect to Profile page and call profileInfo function
 form.addEventListener("submit", (e) => {
@@ -93,29 +142,6 @@ form.addEventListener("submit", (e) => {
 createBtn.addEventListener("click", () => {
   profilePage.classList.add("hidden");
   signupPage.classList.remove("hidden");
-});
-
-// Add event listener to the document instead of individual nav links
-document.addEventListener("click", function (event) {
-  // Check if the clicked element is a nav link
-  if (
-    event.target.matches("#profile-nav-link, #workout-nav-link, #food-nav-link")
-  ) {
-    // Get the ID of the section to show
-    var sectionId = event.target.getAttribute("href");
-
-    // Remove hidden class from the target section
-    document.querySelector(sectionId).classList.remove("hidden");
-
-    // Add hidden class to the other sections
-    var sections = document.querySelectorAll("section:not(" + sectionId + ")");
-    sections.forEach(function (section) {
-      section.classList.add("hidden");
-    });
-
-    // Prevent default link behavior
-    event.preventDefault();
-  }
 });
 
 // ------------  Workout Page ------------
@@ -142,71 +168,27 @@ class Exercise {
     this.reps = reps;
   }
 
-  getExercise = async (type = 'muscle') =>
-  {
-    return await fetch(`${exerciseURL}?${type}=${this.muscle}`,
-      options
-    ).then(res => res.json())
-    .then( ex_array =>
-      {
+  getExercise = async (type = "muscle") => {
+    return await fetch(`${exerciseURL}?${type}=${this.muscle}`, options)
+      .then((response) => response.json())
+      .then((exercise) => {
         return {
-          name: ex_array[randomNumber(ex_array)].name,
+          name: exercise[randomNumber(exercise)].name,
           sets: this.sets,
-          reps: this.reps
-        }
-      }
-    ).catch(err => console.log(err))
-  };
-
-
-  getExerciseByMuscle = async () => {
-    const options = {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": "031f90f2bamsh08f92af0c6fe80cp1d5a1bjsndaa3aea41ea9",
-        "X-RapidAPI-Host": "exercises-by-api-ninjas.p.rapidapi.com",
-      },
-    };
-    try {
-      const response = await fetch(
-        `${exerciseURL}?muscle=${this.muscle}`,
-        options
+          reps: this.reps,
+        };
+      })
+      .catch((error) =>
+        console.error("An Error Occurred with the Fetch Request")
       );
-      const data = await response.json();
-      const exercise = data[randomNumber(data)];
-      return { name: exercise.name, sets: this.sets, reps: this.reps };
-    } catch (error) {
-      console.error("An Error Occurred with the Fetch Request");
-    }
-  };
-
-  getExerciseByType = async () => {
-    const options = {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": "031f90f2bamsh08f92af0c6fe80cp1d5a1bjsndaa3aea41ea9",
-        "X-RapidAPI-Host": "exercises-by-api-ninjas.p.rapidapi.com",
-      },
-    };
-    try {
-      const response = await fetch(
-        `${exerciseURL}?type=${this.muscle}`,
-        options
-      );
-      const data = await response.json();
-      const exercise = data[randomNumber(data)];
-      return { name: exercise.name, sets: this.sets, reps: this.reps };
-    } catch (error) {
-      console.error("An Error Occurred with the Fetch Request");
-    }
   };
 }
 
 const pushDay = () => {
   return [
     new Exercise("chest", 3, 8),
-    new Exercise("triceps", 3, 12),
-    new Exercise("shoulders", 3, 12),
+    new Exercise("traps", 3, 8),
+    new Exercise("biceps", 3, 12),
   ];
 };
 
@@ -236,46 +218,53 @@ const cardioDay = () => {
 
 const stretchingDay = () => {
   return [
-    new Exercise("stretching", 3, 8),
-    new Exercise("stretching", 3, 8),
-    new Exercise("stretching", 3, 12),
+    new Exercise("stretching", 5, null),
+    new Exercise("stretching", 5, null),
+    new Exercise("stretching", 5, null),
   ];
 };
 
 const exerciseDay = async () => {
   const dayOfWeek = 1;
-  let title;
   let promises = [];
+  let title = "";
 
-  if (dayOfWeek === 0 || dayOfWeek === 6) {
-    title = "Rest Day";
-    return Promise.resolve({ title });
-  } else if (dayOfWeek === 1) {
-    title = "Push Day";
-    promises = pushDay();
-  } else if (dayOfWeek === 2) {
-    title = "Pull Day";
-    promises = pullDay();
-  } else if (dayOfWeek === 3) {
-    title = "Leg Day";
-    promises = legDay();
-  } else if (dayOfWeek === 4) {
-    title = "Cardio Day";
-    promises = cardioDay();
-  } else if (dayOfWeek === 5) {
-    title = "Stretching Day";
-    promises = stretchingDay();
-  } else {
-    console.error(error);
+  switch (dayOfWeek) {
+    case 0:
+    case 6:
+      title = "Rest Day";
+      return Promise.resolve({ title });
+    case 1:
+      title = "Push Day";
+      promises = pushDay();
+      break;
+    case 2:
+      title = "Pull Day";
+      promises = pullDay();
+      break;
+    case 3:
+      title = "Leg Day";
+      promises = legDay();
+      break;
+    case 4:
+      title = "Cardio Day";
+      promises = cardioDay();
+      break;
+    case 5:
+      title = "Stretching Day";
+      promises = stretchingDay();
+      break;
+    default:
+      console.error(error);
+      break;
   }
 
   return Promise.all(promises).then((exercises) => {
-    const type = (dayOfWeek === 4 || dayOfWeek === 5) ? 'type' : 'muscle'
-
+    const type = dayOfWeek === 4 || dayOfWeek === 5 ? "type" : "muscle";
     return Promise.resolve({
-      exercise1: exercises[0].getExercise(),
-      exercise2: exercises[1].getExercise(),
-      exercise3: exercises[2].getExercise(),
+      exercise1: exercises[0].getExercise(type),
+      exercise2: exercises[1].getExercise(type),
+      exercise3: exercises[2].getExercise(type),
       title,
     });
   });
@@ -295,6 +284,7 @@ const displayWorkout = async () => {
 
   try {
     const results = await exerciseDay();
+    console.log(results);
     workoutDay.innerHTML = results.title;
     if (
       results.exercise1 === undefined ||
