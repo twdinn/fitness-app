@@ -284,7 +284,6 @@ const displayWorkout = async () => {
 
   try {
     const results = await exerciseDay();
-    console.log(results);
     workoutDay.innerHTML = results.title;
     if (
       results.exercise1 === undefined ||
@@ -367,5 +366,3 @@ const displayFood = async () => {
 };
 
 displayFood();
-
-// ------------  Google Map ------------

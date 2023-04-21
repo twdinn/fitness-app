@@ -123,10 +123,11 @@ body {
   border-radius: 5px;
   border: 1px solid var(--border-color);
   padding: 20px;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .sign-form > h1 {
+  text-align: center;
   font-weight: 700;
   margin-bottom: 1.5rem;
 }
@@ -137,7 +138,7 @@ body {
 
 .sign-form > input {
   height: 1.9rem;
-  margin-bottom: 0.63rem;
+
   background-color: white;
   width: 98%;
   border: 2px solid var(--border-color);
