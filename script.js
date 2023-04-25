@@ -6,6 +6,7 @@ const signupPage = document.getElementById("signup-page");
 const profilePage = document.getElementById("profile-page");
 const workoutPage = document.getElementById("workout-page");
 const foodPage = document.getElementById("food-page");
+const instrucPage = document.getElementById("instruc-page");
 
 // ------------  Start Page ------------
 const startBtn = document.getElementById("start-btn");
@@ -21,6 +22,7 @@ const profileLink = document.getElementById("profile-nav-link");
 const workoutLink = document.getElementById("workout-nav-link");
 const foodLink = document.getElementById("food-nav-link");
 
+const nav = document.getElementById("nav");
 const toggleBtn = document.getElementById("toggle-btn");
 const navLinks = document.getElementById("nav-links");
 const navbarLinks = [profileLink, workoutLink, foodLink];
@@ -47,11 +49,13 @@ navbarLinks.forEach((link) => {
     }
 
     navLinks.classList.toggle("active");
+    nav.classList.toggle("active");
   });
 });
 
 toggleBtn.addEventListener("click", () => {
   navLinks.classList.toggle("active");
+  nav.classList.toggle("active");
 });
 
 // ------------  Profile Page ------------
@@ -85,7 +89,7 @@ const calorieIntake = () => {
 };
 
 // Display Name, Age, Height, BMI/Calorie Intake/Current Weight/Goal Weight in the Profile Section
-const profileInfo = () => {
+const displayProfile = () => {
   const bmi = calculateBMI();
   const calories = calorieIntake();
 
@@ -112,7 +116,7 @@ const profileInfo = () => {
   nav.classList.remove("hidden");
 };
 
-// Save User Info to Local Storage and Redirect to Profile page and call profileInfo function
+// Save User Info to Local Storage and Redirect to Profile page and call displayProfile function
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -122,7 +126,7 @@ form.addEventListener("submit", (e) => {
   localStorage.setItem("Weight", currWeight.value + " lbs.");
   localStorage.setItem("Goal Weight", goWeight.value + " lbs.");
 
-  profileInfo();
+  displayProfile();
   nav.classList.remove("hidden");
 });
 
@@ -136,7 +140,7 @@ form.addEventListener("submit", (e) => {
   localStorage.setItem("Weight", currWeight.value + " lbs.");
   localStorage.setItem("Goal Weight", goWeight.value + " lbs.");
 
-  profileInfo();
+  displayProfile();
 });
 
 createBtn.addEventListener("click", () => {
@@ -172,8 +176,10 @@ class Exercise {
     return await fetch(`${exerciseURL}?${type}=${this.muscle}`, options)
       .then((response) => response.json())
       .then((exercise) => {
+        const index = randomNumber(exercise);
         return {
-          name: exercise[randomNumber(exercise)].name,
+          name: exercise[index].name,
+          instruc: exercise[index].instructions,
           sets: this.sets,
           reps: this.reps,
         };
@@ -225,7 +231,7 @@ const stretchingDay = () => {
 };
 
 const exerciseDay = async () => {
-  const dayOfWeek = 1;
+  const dayOfWeek = 2;
   let promises = [];
   let title = "";
 
@@ -281,6 +287,7 @@ const displayWorkout = async () => {
   const exercise3Name = document.getElementById("exercise3-name");
   const exercise3Sets = document.getElementById("exercise3-sets");
   const exercise3Reps = document.getElementById("exercise3-reps");
+  const instrucInfo = document.getElementById("instruc-info");
 
   try {
     const results = await exerciseDay();
@@ -293,12 +300,40 @@ const displayWorkout = async () => {
       return null;
     } else {
       exercise1Name.innerHTML = await results.exercise1.then((res) => res.name);
+      exercise1Name.addEventListener("click", () => {
+        workoutPage.classList.add("hidden");
+        instrucPage.classList.remove("hidden");
+        results.exercise1.then((res) => {
+          instrucInfo.innerHTML = res.instruc;
+          nav.classList.add("hidden");
+        });
+      });
+
       exercise1Sets.innerHTML = await results.exercise1.then((res) => res.sets);
       exercise1Reps.innerHTML = await results.exercise1.then((res) => res.reps);
+
       exercise2Name.innerHTML = await results.exercise2.then((res) => res.name);
+      exercise2Name.addEventListener("click", () => {
+        workoutPage.classList.add("hidden");
+        instrucPage.classList.remove("hidden");
+        results.exercise2.then((res) => {
+          instrucInfo.innerHTML = res.instruc;
+          nav.classList.add("hidden");
+        });
+      });
+
       exercise2Sets.innerHTML = await results.exercise2.then((res) => res.sets);
       exercise2Reps.innerHTML = await results.exercise2.then((res) => res.reps);
+
       exercise3Name.innerHTML = await results.exercise3.then((res) => res.name);
+      exercise3Name.addEventListener("click", () => {
+        workoutPage.classList.add("hidden");
+        instrucPage.classList.remove("hidden");
+        results.exercise3.then((res) => {
+          instrucInfo.innerHTML = res.instruc;
+          nav.classList.add("hidden");
+        });
+      });
       exercise3Sets.innerHTML = await results.exercise3.then((res) => res.sets);
       exercise3Reps.innerHTML = await results.exercise3.then((res) => res.reps);
     }
@@ -308,6 +343,13 @@ const displayWorkout = async () => {
 };
 
 displayWorkout();
+
+const backBtn = document.getElementById("back-btn");
+backBtn.addEventListener("click", () => {
+  workoutPage.classList.remove("hidden");
+  instrucPage.classList.add("hidden");
+  nav.classList.remove("hidden");
+});
 
 // ------------  Food Page ------------
 

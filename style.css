@@ -19,8 +19,7 @@ body {
   --border-color: #cccccc;
 }
 
-/* Starting screen size 350px */
-/* Start Page */
+/*---------------------------------------------------------------Start Page---------------------------------------------------------------*/
 
 .start-container {
   display: flex;
@@ -99,7 +98,7 @@ body {
   color: var(--primary-text-color);
 }
 
-/* Login Page and Sign Up Pages */
+/*---------------------------------------------------------------SignUp Page---------------------------------------------------------------*/
 .sign-container {
   display: flex;
   flex-direction: column;
@@ -165,7 +164,7 @@ body {
   color: var(--primary-text-color);
 }
 
-/*  NavBar  */
+/*---------------------------------------------------------------NavBar---------------------------------------------------------------*/
 .nav {
   display: flex;
   justify-content: space-between;
@@ -178,11 +177,11 @@ body {
   border-radius: 8px;
 }
 
-.icon img {
+.icon {
   margin: 1rem;
   color: var(--secondary-text-color);
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
 }
 .nav-links > ul {
   display: flex;
@@ -224,17 +223,16 @@ body {
   border-radius: 8px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
   .nav {
     flex-direction: column;
     align-items: flex-start;
-    height: auto;
   }
 
-  .icon img {
-    width: 72px;
-    height: 72px;
-    margin: 4px;
+  .icon {
+    width: 56px;
+    height: 56px;
+    margin: 16px;
   }
 
   .toggle-btn {
@@ -262,42 +260,47 @@ body {
   .nav-links.active {
     display: flex;
   }
+  .nav.active {
+    height: auto;
+  }
 }
 
-/*  Container for Profile, Workout and Food Pages  */
+/*--------------------------------------------------------------Container for Profile, Workout and Food Pages-------------------------------*/
 .container {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 96px);
   background-color: var(--main-background);
 }
 
-/*  Info for Profile, Workout and Food Pages  */
+/*--------------------------------------------------------------Info for Profile, Workout and Food Pages------------------------------------*/
 .info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 95%;
+  max-width: 850px;
   height: fit-content;
   background-color: var(--form-background);
   border: 1px solid var(--border-color);
   padding: 0.31rem;
   margin-bottom: 5px;
   border-radius: 30px;
+  text-align: center;
 }
 
-/* Profile Page */
+/*---------------------------------------------------------------Profile Page---------------------------------------------------------------*/
 #profile-page {
   position: absolute;
 }
 
 #profile-page > h1 {
   text-align: center;
-  font-size: 3rem;
+  font-size: 1.5rem;
 }
 
 #profile-info {
@@ -326,13 +329,13 @@ body {
   margin-left: 2rem;
 }
 
-@media (max-width: 350px) {
+@media (min-width: 480px) {
   #profile-page > h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 }
 
-/* Workout Page */
+/*---------------------------------------------------------------Workout Page---------------------------------------------------------------*/
 
 .workout-greeting {
   text-align: center;
@@ -344,8 +347,8 @@ body {
 
 .workout-info {
   display: grid;
-  grid-template-columns: 0.5fr 0.5fr 0.5fr;
-  grid-template-rows: 0.5fr, 0.5fr, 0.5fr 0.5fr;
+  grid-template-columns: 1fr 100px 100px;
+  grid-template-rows: repeat(4, 50px);
   grid-template-areas:
     "title1 title2 title3"
     "ex-name1 ex-set1 ex-rep1"
@@ -353,6 +356,13 @@ body {
     "ex-name3 ex-set3 ex-rep3";
   justify-items: center;
   align-items: center;
+  max-width: 850px;
+}
+
+.workout-info > a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
 }
 
 .workout-title1 {
@@ -361,7 +371,6 @@ body {
 
 .workout-title2 {
   grid-area: title2;
-  justify-items: start;
 }
 
 .workout-title3 {
@@ -404,34 +413,36 @@ body {
   grid-area: ex-rep3;
 }
 
-.workout-info h2 {
-  font-size: 1rem;
-}
-
-.workout > p {
-  font-size: 0.5rem;
-  align-self: center;
-  justify-items: center;
-}
-
 #profile-name,
 .workout-greeting,
 #food-title {
   color: var(--secondary-text-color);
 }
 
-/* Food Page */
+#instruc-page {
+  height: 100vh;
+}
+
+.back-btn {
+  text-decoration: none;
+  color: var(--secondary-text-color);
+  cursor: pointer;
+}
+
+/*---------------------------------------------------------------Food Page---------------------------------------------------------------*/
 
 .food-info {
   display: grid;
-  grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr;
-  grid-template-rows: repeat(4, 0.5fr);
+  grid-template-columns: 100px 3fr 100px 100px;
+  grid-template-rows: repeat(4, 72px);
   grid-template-areas:
     "meal name cal pro"
     "breakfast breakName breakCal breakPro"
     "lunch lunchName lunchCal lunchPro"
-    "supper supperName supperCal supperPro";
+    "supper supperName supperCal supperPro"
+    "blank blank totCal totPro";
   justify-items: center;
+  align-items: center;
 }
 
 .food-info h2 {
@@ -510,38 +521,14 @@ body {
   grid-area: supperPro;
 }
 
-/* .break-name,
-.lunch-name,
-.supper-name {
-  align-items: start;
-} */
-
-/*
-.totals {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  height: 2px;
-  color: var(--secondary-text-color);
-  margin-top: 1px;
-}
-
 .total-cal {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-right: 0.6rem;
+  grid-area: totCal;
 }
 
 .total-protein {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-right: 2rem;
-} */
-
-@media (max-width: 350px) {
+  grid-area: totPro;
 }
+
 .hidden {
   display: none;
 }

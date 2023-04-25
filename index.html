@@ -14,9 +14,8 @@
   <body>
     <!-- Star Page -->
     <nav class="nav hidden" id="nav">
-      <div class="icon">
-        <img src="exercise.png" alt="fitness-icon" />
-      </div>
+      <img class="icon" src="exercise.png" alt="fitness-icon" />
+
       <a href="#" class="toggle-btn" id="toggle-btn">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -92,114 +91,56 @@
       </div>
 
       <div class="info workout-info" id="workout-info">
-        <div class="exercises">
-          <div class="workout-title1">
-            <h2>Exercise</h2>
-          </div>
-          <div class="ex-name-row1">
-            <p id="exercise1-name"></p>
-          </div>
-          <div class="ex-name-row2">
-            <p id="exercise2-name"></p>
-          </div>
-          <div class="ex-name-row3">
-            <p id="exercise3-name"></p>
-          </div>
-        </div>
-        <div class="sets">
-          <div class="workout-title2">
-            <h2>Sets</h2>
-          </div>
-          <div class="ex-set-row1">
-            <p id="exercise1-sets"></p>
-          </div>
-          <div class="ex-set-row2">
-            <p id="exercise2-sets"></p>
-          </div>
-          <div class="ex-set-row3">
-            <p id="exercise3-sets"></p>
-          </div>
-        </div>
-        <div class="reps">
-          <div class="workout-title3">
-            <h2>Reps</h2>
-          </div>
-          <div class="ex-rep-row1">
-            <p id="exercise1-reps"></p>
-          </div>
-          <div class="ex-rep-row2">
-            <p id="exercise2-reps"></p>
-          </div>
-          <div class="ex-rep-row3">
-            <p id="exercise3-reps"></p>
-          </div>
-        </div>
+        <h2 class="workout-title1">Exercise</h2>
+        <a class="ex-name-row1" href="#"><p id="exercise1-name"></p></a>
+        <a class="ex-name-row2" href="#"><p id="exercise2-name"></p></a>
+        <a class="ex-name-row3" href="#"><p id="exercise3-name"></p> </a>
+
+        <h2 class="workout-title2">Sets</h2>
+        <p class="ex-set-row1" id="exercise1-sets"></p>
+        <p class="ex-set-row2" id="exercise2-sets"></p>
+        <p class="ex-set-row3" id="exercise3-sets"></p>
+
+        <h2 class="workout-title3">Reps</h2>
+        <p class="ex-rep-row1" id="exercise1-reps"></p>
+        <p class="ex-rep-row2" id="exercise2-reps"></p>
+        <p class="ex-rep-row3" id="exercise3-reps"></p>
       </div>
+    </section>
+    <section class="container hidden" id="instruc-page">
+      <div class="info">
+        <p id="instruc-info"></p>
+      </div>
+      <a class="back-btn" href="#" id="back-btn">Go Back</a>
     </section>
     <!-- Food Page -->
     <section class="container hidden" id="food-page">
       <h1 id="food-title">Todays Food Suggestions</h1>
-      <div class="info food-info" id="food-info">
-        <div class="food-title">
-          <h2>Meal</h2>
-        </div>
-        <div class="food-title1">
-          <h3>Breakfast</h3>
-        </div>
-        <div class="food-title2">
-          <h3>Lunch</h3>
-        </div>
-        <div class="food-title3">
-          <h3>Supper</h3>
-        </div>
 
-        <div class="meal-name">
-          <h2>Name</h2>
-        </div>
-        <div class="break-name">
-          <p id="break-name"></p>
-        </div>
-        <div class="lunch-name">
-          <p id="lunch-name"></p>
-        </div>
-        <div class="supper-name">
-          <p id="supper-name"></p>
-        </div>
+      <div class="info">
+        <div class="food-info" id="food-info">
+          <h2 class="food-title">Meal</h2>
+          <h3 class="food-title1">Breakfast</h3>
+          <h3 class="food-title2">Lunch</h3>
+          <h3 class="food-title3">Supper</h3>
 
-        <div class="meal-cal">
-          <h2>Calories</h2>
-        </div>
-        <div class="break-cal">
-          <p id="break-cal"></p>
-        </div>
-        <div class="lunch-cal">
-          <p id="lunch-cal"></p>
-        </div>
-        <div class="supper-cal">
-          <p id="supper-cal"></p>
-        </div>
+          <h2 class="meal-name">Name</h2>
+          <p class="break-name" id="break-name"></p>
+          <p class="lunch-name" id="lunch-name"></p>
+          <p class="supper-name" id="supper-name"></p>
 
-        <div class="meal-pro">
-          <h2>Protein</h2>
-        </div>
-        <div class="break-pro">
-          <p id="break-protein"></p>
-        </div>
-        <div class="lunch-pro">
-          <p id="lunch-protein"></p>
-        </div>
-        <div class="supper-pro">
-          <p id="supper-protein"></p>
-        </div>
-      </div>
-      <div class="totals">
-        <div class="total-cal">
-          <h4>Total Calories:</h4>
-          <h6 id="total-cal"></h6>
-        </div>
-        <div class="total-protein">
-          <h4>Total Protein:</h4>
-          <h6 id="total-protein"></h6>
+          <h2 class="meal-cal">Calories</h2>
+          <p class="break-cal" id="break-cal"></p>
+          <p class="lunch-cal" id="lunch-cal"></p>
+          <p class="supper-cal" id="supper-cal"></p>
+
+          <h2 class="meal-pro">Protein</h2>
+          <p class="break-pro" id="break-protein"></p>
+          <p class="lunch-pro" id="lunch-protein"></p>
+          <p class="supper-pro" id="supper-protein"></p>
+
+          <p class="total-cal" id="total-cal"></p>
+          <p class="total-protein" id="total-protein"></p>
         </div>
       </div>
     </section>
