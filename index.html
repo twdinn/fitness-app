@@ -12,9 +12,12 @@
     <title>Fitness App</title>
   </head>
   <body>
-    <!-- Star Page -->
+    <!-- Nav  -->
     <nav class="nav hidden" id="nav">
-      <img class="icon" src="exercise.png" alt="fitness-icon" />
+      <div class="nav-brand">
+        <img class="icon" src="exercise.png" alt="fitness-icon" />
+        <h1 class="logo">Fitness App</h1>
+      </div>
 
       <a href="#" class="toggle-btn" id="toggle-btn">
         <span class="bar"></span>
@@ -23,7 +26,7 @@
       </a>
       <div class="nav-links" id="nav-links">
         <ul>
-          <li><a id="profile-nav-link" href="#profile-page">Home</a></li>
+          <li><a id="profile-nav-link" href="#profile-page">Profile</a></li>
           <li><a id="workout-nav-link" href="#workout-page">Workout</a></li>
           <li><a id="food-nav-link" href="#food-page">Food</a></li>
         </ul>
@@ -47,15 +50,30 @@
           <h5>Age</h5>
           <input type="text" id="age" placeholder="Age" required />
           <h5>Height</h5>
-          <input type="number" id="feet" placeholder="ft" required />
-          <input type="number" id="inches" placeholder="in" required />
+          <div class="height">
+            <input type="number" id="feet" placeholder="ft" required />
+            <input type="number" id="inches" placeholder="in" required />
+          </div>
+
           <h5>Current Weight</h5>
-          <input type="number" id="curr-weight" placeholder="lbs" required />
+          <input
+            type="number"
+            id="curr-weight"
+            placeholder="lbs"
+            min="0"
+            required
+          />
           <h5>Goal Weight</h5>
-          <input type="number" id="go-weight" placeholder="lbs" required />
+          <input
+            type="number"
+            id="go-weight"
+            placeholder="lbs"
+            min="0"
+            required
+          />
 
           <button id="create-btn" class="form-btn" type="submit">
-            Create Profile
+            CREATE PROFILE
           </button>
         </form>
       </div>
@@ -92,7 +110,10 @@
 
       <div class="info workout-info" id="workout-info">
         <h2 class="workout-title1">Exercise</h2>
-        <a class="ex-name-row1" href="#"><p id="exercise1-name"></p></a>
+        <h2 class="workout-title2">Sets</h2>
+        <h2 class="workout-title3">Reps</h2>
+
+        <!-- <a class="ex-name-row1" href="#"><p id="exercise1-name"></p></a>
         <a class="ex-name-row2" href="#"><p id="exercise2-name"></p></a>
         <a class="ex-name-row3" href="#"><p id="exercise3-name"></p> </a>
 
@@ -104,8 +125,13 @@
         <h2 class="workout-title3">Reps</h2>
         <p class="ex-rep-row1" id="exercise1-reps"></p>
         <p class="ex-rep-row2" id="exercise2-reps"></p>
-        <p class="ex-rep-row3" id="exercise3-reps"></p>
+        <p class="ex-rep-row3" id="exercise3-reps"></p> -->
       </div>
+      <template>
+        <a class="ex-name-row" href="#"><p id="exercise-name"></p></a>
+        <p class="ex-set-row" id="exercise-sets"></p>
+        <p class="ex-rep-row" id="exercise-reps"></p>
+      </template>
     </section>
     <section class="container hidden" id="instruc-page">
       <div class="info">

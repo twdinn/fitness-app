@@ -231,7 +231,7 @@ const stretchingDay = () => {
 };
 
 const exerciseDay = async () => {
-  const dayOfWeek = 2;
+  const dayOfWeek = 1;
   let promises = [];
   let title = "";
 
@@ -275,67 +275,39 @@ const exerciseDay = async () => {
     });
   });
 };
-
 const displayWorkout = async () => {
   const workoutDay = document.getElementById("workout-day");
-  const exercise1Name = document.getElementById("exercise1-name");
-  const exercise1Sets = document.getElementById("exercise1-sets");
-  const exercise1Reps = document.getElementById("exercise1-reps");
-  const exercise2Name = document.getElementById("exercise2-name");
-  const exercise2Sets = document.getElementById("exercise2-sets");
-  const exercise2Reps = document.getElementById("exercise2-reps");
-  const exercise3Name = document.getElementById("exercise3-name");
-  const exercise3Sets = document.getElementById("exercise3-sets");
-  const exercise3Reps = document.getElementById("exercise3-reps");
+  const workoutInfo = document.getElementById("workout-info");
+  const template = document.querySelector("template");
   const instrucInfo = document.getElementById("instruc-info");
 
   try {
     const results = await exerciseDay();
     workoutDay.innerHTML = results.title;
-    if (
-      results.exercise1 === undefined ||
-      results.exercise2 === undefined ||
-      results.exercise3 === undefined
-    ) {
+
+    const exercisePromises = Object.values(results);
+
+    const numExercises = exercisePromises.length;
+
+    if (numExercises === 0) {
       return null;
     } else {
-      exercise1Name.innerHTML = await results.exercise1.then((res) => res.name);
-      exercise1Name.addEventListener("click", () => {
-        workoutPage.classList.add("hidden");
-        instrucPage.classList.remove("hidden");
-        results.exercise1.then((res) => {
+      for (let i = 1; i <= numExercises; i++) {
+        const exercise = await exercisePromises[i - 1];
+        const res = await exercise;
+        const clone = template.content.cloneNode(true);
+        clone.querySelector("#exercise-name").textContent = res.name;
+        console.log(res.name);
+        clone.querySelector("#exercise-sets").textContent = res.sets;
+        clone.querySelector("#exercise-reps").textContent = res.reps;
+        clone.querySelector("#exercise-name").addEventListener("click", () => {
+          workoutPage.classList.add("hidden");
+          instrucPage.classList.remove("hidden");
           instrucInfo.innerHTML = res.instruc;
           nav.classList.add("hidden");
         });
-      });
-
-      exercise1Sets.innerHTML = await results.exercise1.then((res) => res.sets);
-      exercise1Reps.innerHTML = await results.exercise1.then((res) => res.reps);
-
-      exercise2Name.innerHTML = await results.exercise2.then((res) => res.name);
-      exercise2Name.addEventListener("click", () => {
-        workoutPage.classList.add("hidden");
-        instrucPage.classList.remove("hidden");
-        results.exercise2.then((res) => {
-          instrucInfo.innerHTML = res.instruc;
-          nav.classList.add("hidden");
-        });
-      });
-
-      exercise2Sets.innerHTML = await results.exercise2.then((res) => res.sets);
-      exercise2Reps.innerHTML = await results.exercise2.then((res) => res.reps);
-
-      exercise3Name.innerHTML = await results.exercise3.then((res) => res.name);
-      exercise3Name.addEventListener("click", () => {
-        workoutPage.classList.add("hidden");
-        instrucPage.classList.remove("hidden");
-        results.exercise3.then((res) => {
-          instrucInfo.innerHTML = res.instruc;
-          nav.classList.add("hidden");
-        });
-      });
-      exercise3Sets.innerHTML = await results.exercise3.then((res) => res.sets);
-      exercise3Reps.innerHTML = await results.exercise3.then((res) => res.reps);
+        workoutInfo.appendChild(clone);
+      }
     }
   } catch (error) {
     console.error(error);

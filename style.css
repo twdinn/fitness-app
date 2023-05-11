@@ -12,9 +12,9 @@ body {
 
 :root {
   --primary-text-color: #333333;
-  --secondary-text-color: #ededed;
+  --secondary-text-color: #ffffff;
   --form-background: #ffffff;
-  --button-background: #337ab7;
+  --button-background: #d12c20;
   --main-background: #233237;
   --border-color: #cccccc;
 }
@@ -89,13 +89,17 @@ body {
   background-color: var(--button-background);
   cursor: pointer;
   text-decoration: none;
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
   font-size: 1rem;
   font-weight: 700;
 }
 
 .start-journey > a:visited {
   color: var(--primary-text-color);
+}
+
+.start-journey > a:hover {
+  transform: scale(1.1);
 }
 
 /*---------------------------------------------------------------SignUp Page---------------------------------------------------------------*/
@@ -116,12 +120,12 @@ body {
 .sign-form {
   display: flex;
   flex-direction: column;
-  width: 18rem;
+  width: 24rem;
   height: fit-content;
   background-color: var(--form-background);
   border-radius: 5px;
   border: 1px solid var(--border-color);
-  padding: 20px;
+  padding: 40px;
   margin-top: 1rem;
 }
 
@@ -135,33 +139,41 @@ body {
   margin-bottom: 0.3rem;
 }
 
-.sign-form > input {
+.sign-form input {
   height: 1.9rem;
-
   background-color: white;
   width: 98%;
   border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.height {
+  display: flex;
+}
+
+.height > #feet {
+  margin-right: 10px;
 }
 
 .form-btn {
   background-color: var(--button-background);
   width: 100%;
-  height: 1.9rem;
+  height: 2.2rem;
   border: 1px solid var(--border-color);
   margin-top: 0.63rem;
   border-radius: 20px;
-  color: var(--primary-text-color);
-}
-
-.form-btn > a {
+  color: var(--secondary-text-color);
+  text-align: center;
+  font-weight: 700;
   text-decoration: none;
   font-size: 1rem;
-  font-weight: 700;
-  color: var(--primary-text-color);
+  margin-top: 2.5rem;
+  cursor: pointer;
 }
 
-.form-btn > a:visited {
-  color: var(--primary-text-color);
+.form-btn:hover {
+  transform: scale(1.1);
 }
 
 /*---------------------------------------------------------------NavBar---------------------------------------------------------------*/
@@ -175,6 +187,11 @@ body {
   height: 96px;
   border: 1px solid var(--border-color);
   border-radius: 8px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
 }
 
 .icon {
@@ -351,9 +368,9 @@ body {
   grid-template-rows: repeat(4, 50px);
   grid-template-areas:
     "title1 title2 title3"
-    "ex-name1 ex-set1 ex-rep1"
-    "ex-name2 ex-set2 ex-rep2"
-    "ex-name3 ex-set3 ex-rep3";
+    "ex-name ex-set ex-rep";
+  /* "ex-name2 ex-set2 ex-rep2"
+    "ex-name3 ex-set3 ex-rep3"; */
   justify-items: center;
   align-items: center;
   max-width: 850px;
