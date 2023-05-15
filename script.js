@@ -297,7 +297,6 @@ const displayWorkout = async () => {
         const res = await exercise;
         const clone = template.content.cloneNode(true);
         clone.querySelector("#exercise-name").textContent = res.name;
-        console.log(res.name);
         clone.querySelector("#exercise-sets").textContent = res.sets;
         clone.querySelector("#exercise-reps").textContent = res.reps;
         clone.querySelector("#exercise-name").addEventListener("click", () => {

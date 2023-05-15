@@ -15,7 +15,7 @@ body {
   --secondary-text-color: #ffffff;
   --form-background: #ffffff;
   --button-background: #d12c20;
-  --main-background: #233237;
+  --main-background: #1a1a1a;
   --border-color: #cccccc;
 }
 
@@ -181,12 +181,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #362f26;
+  background-color: #111111;
   position: relative;
   width: 100vw;
   height: 96px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .nav-brand {
@@ -223,10 +223,6 @@ body {
 .nav-links a:active {
   color: var(--button-background);
 }
-
-/* .nav-links a:visited {
-  color: var(--button-background);
-} */
 
 .toggle-btn {
   display: none;
@@ -300,7 +296,7 @@ body {
 }
 
 /*--------------------------------------------------------------Info for Profile, Workout and Food Pages------------------------------------*/
-.info {
+/* .info {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -314,7 +310,7 @@ body {
   margin-bottom: 5px;
   border-radius: 30px;
   text-align: center;
-}
+} */
 
 /*---------------------------------------------------------------Profile Page---------------------------------------------------------------*/
 #profile-page {
@@ -346,12 +342,11 @@ body {
   justify-content: space-evenly;
   align-items: center;
   width: 10rem;
-  height: 10rem;
+  height: 9rem;
   background-color: var(--form-background);
   border: 1px solid var(--border-color);
-  padding: 0.31rem;
-  margin: 5px;
-  border-radius: 30px;
+  margin: 8px;
+  border-radius: 8px;
 }
 
 /* .profile-question {
@@ -420,6 +415,15 @@ body {
   justify-items: center;
   align-items: center;
   max-width: 850px;
+}
+
+.ex-temp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: calc(100vh - 96px);
+  background-color: var(--main-background);
 }
 
 .workout-info > a {
