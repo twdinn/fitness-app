@@ -284,10 +284,12 @@ const displayWorkout = async () => {
   try {
     const results = await exerciseDay();
     workoutDay.innerHTML = results.title;
+    console.log(results);
 
     const exercisePromises = Object.values(results);
-
+    console.log(exercisePromises);
     const numExercises = exercisePromises.length;
+    console.log(numExercises);
 
     if (numExercises === 0) {
       return null;

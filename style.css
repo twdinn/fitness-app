@@ -242,6 +242,12 @@ body {
   border-radius: 8px;
 }
 
+@media (max-width: 633px) {
+  .nav-links a {
+    font-size: 1rem;
+  }
+}
+
 @media (max-width: 600px) {
   .nav {
     flex-direction: column;
@@ -293,6 +299,7 @@ body {
   width: 100vw;
   height: calc(100vh - 96px);
   background-color: var(--main-background);
+  overflow-y: scroll;
 }
 
 /*--------------------------------------------------------------Info for Profile, Workout and Food Pages------------------------------------*/
@@ -319,7 +326,6 @@ body {
 
 #profile-page > h1 {
   text-align: center;
-  font-size: 1rem;
 }
 
 #profile-page h2 {
@@ -349,32 +355,7 @@ body {
   border-radius: 8px;
 }
 
-/* .profile-question {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  height: 100%;
-}
-
-.profile-question > h2 {
-  font-size: 1rem;
-}
-
-.profile-answer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  height: 100%;
-  margin-left: 2rem;
-} */
-
 @media (min-width: 530px) {
-  #profile-page > h1 {
-    font-size: 2.5rem;
-  }
-
   .all-pro-info {
     display: flex;
     flex-direction: column;
@@ -393,6 +374,12 @@ body {
   }
 }
 
+@media (max-width: 360px) {
+  .profile-info {
+    width: 9.5rem;
+  }
+}
+
 /*---------------------------------------------------------------Workout Page---------------------------------------------------------------*/
 
 .workout-greeting {
@@ -403,20 +390,39 @@ body {
   margin: 5rem;
 }
 
+.exercise-card {
+  background-color: var(--form-background);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.exercise-card p {
+  margin: 5px 0;
+}
+
 .workout-info {
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 100px 100px;
   grid-template-rows: repeat(4, 50px);
   grid-template-areas:
     "title1 title2 title3"
     "ex-name ex-set ex-rep";
-  /* "ex-name2 ex-set2 ex-rep2"
-    "ex-name3 ex-set3 ex-rep3"; */
   justify-items: center;
   align-items: center;
-  max-width: 850px;
+  max-width: 850px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+.bottom-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-left: 10px;
+}
 .ex-temp {
   display: flex;
   justify-content: center;
@@ -438,6 +444,7 @@ body {
 
 .workout-title2 {
   grid-area: title2;
+  margin-right: 1rem;
 }
 
 .workout-title3 {
@@ -499,101 +506,86 @@ body {
 /*---------------------------------------------------------------Food Page---------------------------------------------------------------*/
 
 .food-info {
-  display: grid;
-  grid-template-columns: 100px 3fr 100px 100px;
-  grid-template-rows: repeat(4, 72px);
-  grid-template-areas:
-    "meal name cal pro"
-    "breakfast breakName breakCal breakPro"
-    "lunch lunchName lunchCal lunchPro"
-    "supper supperName supperCal supperPro"
-    "blank blank totCal totPro";
-  justify-items: center;
+  display: flex;
+}
+
+.food-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--form-background);
+  border: 1px solid var(--border-color);
+  width: 12rem;
+  height: 16rem;
+  border-radius: 12px;
+  margin-right: 1rem;
+}
+
+.food-card > .food-name {
+  text-align: center;
+}
+
+#food-sug {
+  color: var(--secondary-text-color);
+}
+
+.food-card > .food-title {
+  display: flex;
+  justify-content: center;
+}
+
+.food-cal-pro {
+  display: flex;
+}
+
+.cal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.pro {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-.food-info h2 {
-  font-size: 1rem;
+.tot-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--form-background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 1rem;
 }
 
-.food-info h3 {
-  font-size: 0.8rem;
+.tot-card > * {
+  margin: 8px;
 }
 
-.food-info p {
-  font-size: 0.8rem;
-}
-
-.food-title {
-  grid-area: meal;
-}
-
-.food-title1 {
-  grid-area: breakfast;
-}
-
-.food-title2 {
-  grid-area: lunch;
-}
-
-.food-title3 {
-  grid-area: supper;
-}
-
-.meal-name {
-  grid-area: name;
-}
-
-.break-name {
-  grid-area: breakName;
-}
-
-.lunch-name {
-  grid-area: lunchName;
-}
-
-.supper-name {
-  grid-area: supperName;
-}
-
-.meal-cal {
-  grid-area: cal;
-}
-
-.break-cal {
-  grid-area: breakCal;
-}
-
-.lunch-cal {
-  grid-area: lunchCal;
-}
-
-.supper-cal {
-  grid-area: supperCal;
-}
-
-.meal-pro {
-  grid-area: pro;
-}
-
-.break-pro {
-  grid-area: breakPro;
-}
-
-.lunch-pro {
-  grid-area: lunchPro;
-}
-
-.supper-pro {
-  grid-area: supperPro;
-}
-
-.total-cal {
+/* .total-cal {
   grid-area: totCal;
 }
 
 .total-protein {
   grid-area: totPro;
+} */
+
+@media (max-width: 633px) {
+  .food-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .food-card {
+    margin: 1rem;
+  }
+
+  #food-sug {
+    margin-top: 30rem;
+  }
 }
 
 .hidden {

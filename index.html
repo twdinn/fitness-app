@@ -117,23 +117,6 @@
             <p id="cal-intake"></p>
           </div>
         </div>
-
-        <!-- <div class="profile-question">
-          <h2>Age:</h2>
-          <h2>Height:</h2>
-          <h2>Weight:</h2>
-          <h2>Goal Weight:</h2>
-          <h2>BMI:</h2>
-          <h2>Calorie Intake:</h2>
-        </div>
-        <div class="profile-answer">
-          <p id="profile-age"></p>
-          <p id="profile-height"></p>
-          <p id="profile-weight"></p>
-          <p id="profile-goal"></p>
-          <p id="bmi"></p>
-          <p id="cal-intake"></p>
-        </div> -->
       </div>
     </section>
     <!-- Workout Page -->
@@ -144,29 +127,22 @@
       </div>
 
       <div class="info workout-info" id="workout-info">
-        <h2 class="workout-title1">Exercise</h2>
-        <h2 class="workout-title2">Sets</h2>
-        <h2 class="workout-title3">Reps</h2>
+        <div>
+          <h2 class="workout-title1">Exercise</h2>
+          <a class="ex-name-row" href="#"><p id="exercise-name"></p></a>
+        </div>
+        <div class="bottom-row">
+          <div>
+            <h2 class="workout-title2">Sets</h2>
+            <p class="ex-set-row" id="exercise-sets"></p>
+          </div>
 
-        <!-- <a class="ex-name-row1" href="#"><p id="exercise1-name"></p></a>
-        <a class="ex-name-row2" href="#"><p id="exercise2-name"></p></a>
-        <a class="ex-name-row3" href="#"><p id="exercise3-name"></p> </a>
-
-        <h2 class="workout-title2">Sets</h2>
-        <p class="ex-set-row1" id="exercise1-sets"></p>
-        <p class="ex-set-row2" id="exercise2-sets"></p>
-        <p class="ex-set-row3" id="exercise3-sets"></p>
-
-        <h2 class="workout-title3">Reps</h2>
-        <p class="ex-rep-row1" id="exercise1-reps"></p>
-        <p class="ex-rep-row2" id="exercise2-reps"></p>
-        <p class="ex-rep-row3" id="exercise3-reps"></p> -->
+          <div>
+            <h2 class="workout-title3">Reps</h2>
+            <p class="ex-rep-row" id="exercise-reps"></p>
+          </div>
+        </div>
       </div>
-      <template>
-        <a class="ex-name-row" href="#"><p id="exercise-name"></p></a>
-        <p class="ex-set-row" id="exercise-sets"></p>
-        <p class="ex-rep-row" id="exercise-reps"></p>
-      </template>
     </section>
     <section class="container hidden" id="instruc-page">
       <div class="info">
@@ -176,33 +152,59 @@
     </section>
     <!-- Food Page -->
     <section class="container hidden" id="food-page">
-      <h1 id="food-title">Todays Food Suggestions</h1>
+      <h1 id="food-sug">Todays Food Suggestions</h1>
 
-      <div class="info">
-        <div class="food-info" id="food-info">
-          <h2 class="food-title">Meal</h2>
-          <h3 class="food-title1">Breakfast</h3>
-          <h3 class="food-title2">Lunch</h3>
-          <h3 class="food-title3">Supper</h3>
-
-          <h2 class="meal-name">Name</h2>
-          <p class="break-name" id="break-name"></p>
-          <p class="lunch-name" id="lunch-name"></p>
-          <p class="supper-name" id="supper-name"></p>
-
-          <h2 class="meal-cal">Calories</h2>
-          <p class="break-cal" id="break-cal"></p>
-          <p class="lunch-cal" id="lunch-cal"></p>
-          <p class="supper-cal" id="supper-cal"></p>
-
-          <h2 class="meal-pro">Protein</h2>
-          <p class="break-pro" id="break-protein"></p>
-          <p class="lunch-pro" id="lunch-protein"></p>
-          <p class="supper-pro" id="supper-protein"></p>
-
-          <p class="total-cal" id="total-cal"></p>
-          <p class="total-protein" id="total-protein"></p>
+      <div class="food-info" id="food-info">
+        <div class="food-card">
+          <h3 class="food-title">Breakfast</h3>
+          <p class="food-name" id="break-name"></p>
+          <div class="food-cal-pro">
+            <div class="cal">
+              <h4 class="meal-cal">Calories</h4>
+              <p class="break-cal" id="break-cal"></p>
+            </div>
+            <div class="pro">
+              <h4 class="meal-pro">Protein</h4>
+              <p class="break-pro" id="break-protein"></p>
+            </div>
+          </div>
         </div>
+
+        <div class="food-card">
+          <h3 class="food-title">Lunch</h3>
+          <p class="food-name" id="lunch-name"></p>
+          <div class="food-cal-pro">
+            <div class="cal">
+              <h4 class="meal-cal">Calories</h4>
+              <p class="lunch-cal" id="lunch-cal"></p>
+            </div>
+            <div class="pro">
+              <h4 class="meal-pro">Protein</h4>
+              <p class="lunch-pro" id="lunch-protein"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <h3 class="food-title">Supper</h3>
+          <p class="food-name" id="supper-name"></p>
+          <div class="food-cal-pro">
+            <div class="cal">
+              <h4 class="meal-cal">Calories</h4>
+              <p class="supper-cal" id="supper-cal"></p>
+            </div>
+            <div class="pro">
+              <h4 class="meal-pro">Protein</h4>
+              <p class="supper-pro" id="supper-protein"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tot-card">
+        <h4 class="meal-cal">Total Calories</h4>
+        <p class="total-cal" id="total-cal"></p>
+        <h4 class="meal-pro">Total Protein</h4>
+        <p class="total-protein" id="total-protein"></p>
       </div>
     </section>
 
