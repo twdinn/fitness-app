@@ -338,12 +338,15 @@ const displayFood = async () => {
   const breakName = document.getElementById("break-name");
   const breakCal = document.getElementById("break-cal");
   const breakProtein = document.getElementById("break-protein");
+  const breakRecipe = document.getElementById("break-recipe");
   const lunchName = document.getElementById("lunch-name");
   const lunchCal = document.getElementById("lunch-cal");
   const lunchProtein = document.getElementById("lunch-protein");
+  const lunchRecipe = document.getElementById("lunch-recipe");
   const supperName = document.getElementById("supper-name");
   const supperCal = document.getElementById("supper-cal");
   const supperProtein = document.getElementById("supper-protein");
+  const supperRecipe = document.getElementById("supper-recipe");
   const totalCal = document.getElementById("total-cal");
   const totalProtein = document.getElementById("total-protein");
 
@@ -356,14 +359,17 @@ const displayFood = async () => {
     breakName.innerHTML = results.food.breakfast[randomIndexBreak].name;
     breakCal.innerHTML = results.food.breakfast[randomIndexBreak].calories;
     breakProtein.innerHTML = `${results.food.breakfast[randomIndexBreak].protein}g`;
+    breakRecipe.href = results.food.breakfast[randomIndexBreak].recipe;
 
     lunchName.innerHTML = results.food.lunch[randomIndexLunch].name;
     lunchCal.innerHTML = results.food.lunch[randomIndexLunch].calories;
     lunchProtein.innerHTML = `${results.food.lunch[randomIndexLunch].protein}g`;
+    lunchRecipe.href = results.food.lunch[randomIndexLunch].recipe;
 
     supperName.innerHTML = results.food.supper[randomIndexSupper].name;
     supperCal.innerHTML = results.food.supper[randomIndexSupper].calories;
     supperProtein.innerHTML = `${results.food.supper[randomIndexSupper].protein}g`;
+    supperRecipe.href = results.food.supper[randomIndexSupper].recipe;
 
     totalCal.innerHTML =
       parseInt(breakCal.innerHTML) +

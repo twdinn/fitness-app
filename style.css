@@ -176,6 +176,12 @@ body {
   transform: scale(1.1);
 }
 
+@media (max-width: 400px) {
+  .sign-form {
+    width: 20rem;
+  }
+}
+
 /*---------------------------------------------------------------NavBar---------------------------------------------------------------*/
 .nav {
   display: flex;
@@ -566,13 +572,14 @@ body {
   margin: 8px;
 }
 
-/* .total-cal {
-  grid-area: totCal;
+.recipe {
+  list-style: none;
+  text-decoration: none;
 }
 
-.total-protein {
-  grid-area: totPro;
-} */
+.recipe:visited {
+  color: black;
+}
 
 @media (max-width: 633px) {
   .food-info {
