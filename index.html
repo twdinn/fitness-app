@@ -125,29 +125,29 @@
         <h1>Todays Workout</h1>
         <h1 id="workout-day"></h1>
       </div>
+      <div class="workout-info" id="workout-info">
+        <template id="exercise-card-template">
+          <div class="exercise-card">
+            <h3 class="workout-title1">Exercise</h3>
+            <p class="ex-name-row" id="exercise-name"></p>
 
-      <div class="info workout-info" id="workout-info">
-        <div>
-          <h2 class="workout-title1">Exercise</h2>
-          <a class="ex-name-row" href="#"><p id="exercise-name"></p></a>
-        </div>
-        <div class="bottom-row">
-          <div>
-            <h2 class="workout-title2">Sets</h2>
-            <p class="ex-set-row" id="exercise-sets"></p>
+            <div class="bottom-row">
+              <div class="sets">
+                <h4 class="workout-title2">Sets</h4>
+                <p class="ex-set-row" id="exercise-sets"></p>
+              </div>
+              <div class="reps">
+                <h4 class="workout-title3">Reps</h4>
+                <p class="ex-rep-row" id="exercise-reps"></p>
+              </div>
+            </div>
+            <a class="instruc" id="instruc" href="#">Click for Instructions</a>
           </div>
-
-          <div>
-            <h2 class="workout-title3">Reps</h2>
-            <p class="ex-rep-row" id="exercise-reps"></p>
-          </div>
-        </div>
+        </template>
       </div>
     </section>
     <section class="container hidden" id="instruc-page">
-      <div class="info">
-        <p id="instruc-info"></p>
-      </div>
+      <p id="instruc-info"></p>
       <a class="back-btn" href="#" id="back-btn">Go Back</a>
     </section>
     <!-- Food Page -->

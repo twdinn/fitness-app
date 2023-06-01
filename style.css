@@ -308,23 +308,6 @@ body {
   overflow-y: scroll;
 }
 
-/*--------------------------------------------------------------Info for Profile, Workout and Food Pages------------------------------------*/
-/* .info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 95%;
-  max-width: 150px;
-  height: fit-content;
-  background-color: var(--form-background);
-  border: 1px solid var(--border-color);
-  padding: 0.31rem;
-  margin-bottom: 5px;
-  border-radius: 30px;
-  text-align: center;
-} */
-
 /*---------------------------------------------------------------Profile Page---------------------------------------------------------------*/
 #profile-page {
   position: absolute;
@@ -396,101 +379,52 @@ body {
   margin: 5rem;
 }
 
-.exercise-card {
-  background-color: var(--form-background);
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.exercise-card p {
-  margin: 5px 0;
-}
-
 .workout-info {
-  /* display: grid;
-  grid-template-columns: 1fr 100px 100px;
-  grid-template-rows: repeat(4, 50px);
-  grid-template-areas:
-    "title1 title2 title3"
-    "ex-name ex-set ex-rep";
-  justify-items: center;
-  align-items: center;
-  max-width: 850px; */
+  display: flex;
+}
+
+.exercise-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--form-background);
+  border: 1px solid var(--border-color);
+  width: 12rem;
+  height: 20rem;
+  border-radius: 12px;
+  margin-right: 1rem;
+}
+
+.ex-name-row {
+  text-align: center;
 }
 
 .bottom-row {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding-left: 10px;
 }
-.ex-temp {
+
+.sets {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: calc(100vh - 96px);
-  background-color: var(--main-background);
-}
-
-.workout-info > a {
-  text-decoration: none;
-  color: black;
-  cursor: pointer;
-}
-
-.workout-title1 {
-  grid-area: title1;
-}
-
-.workout-title2 {
-  grid-area: title2;
   margin-right: 1rem;
 }
 
-.workout-title3 {
-  grid-area: title3;
+.reps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.ex-name-row1 {
-  grid-area: ex-name1;
+.instruc {
+  text-decoration: none;
 }
 
-.ex-name-row2 {
-  grid-area: ex-name2;
-}
-
-.ex-name-row3 {
-  grid-area: ex-name3;
-}
-
-.ex-set-row1 {
-  grid-area: ex-set1;
-}
-
-.ex-set-row2 {
-  grid-area: ex-set2;
-}
-
-.ex-set-row3 {
-  grid-area: ex-set3;
-}
-
-.ex-rep-row1 {
-  grid-area: ex-rep1;
-}
-
-.ex-rep-row2 {
-  grid-area: ex-rep2;
-}
-
-.ex-rep-row3 {
-  grid-area: ex-rep3;
+.instruc:visited {
+  color: black;
 }
 
 #profile-name,
@@ -501,6 +435,10 @@ body {
 
 #instruc-page {
   height: 100vh;
+}
+
+#instruc-info {
+  color: var(--secondary-text-color);
 }
 
 .back-btn {
@@ -523,7 +461,7 @@ body {
   background-color: var(--form-background);
   border: 1px solid var(--border-color);
   width: 12rem;
-  height: 16rem;
+  height: 20rem;
   border-radius: 12px;
   margin-right: 1rem;
 }
@@ -573,8 +511,8 @@ body {
 }
 
 .recipe {
-  list-style: none;
   text-decoration: none;
+  padding-bottom: 10px;
 }
 
 .recipe:visited {

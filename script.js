@@ -231,7 +231,7 @@ const stretchingDay = () => {
 };
 
 const exerciseDay = async () => {
-  const dayOfWeek = 1;
+  const dayOfWeek = new Date().getDay();
   let promises = [];
   let title = "";
 
@@ -277,36 +277,39 @@ const exerciseDay = async () => {
 };
 const displayWorkout = async () => {
   const workoutDay = document.getElementById("workout-day");
+  const template = document.getElementById("exercise-card-template");
   const workoutInfo = document.getElementById("workout-info");
-  const template = document.querySelector("template");
   const instrucInfo = document.getElementById("instruc-info");
 
   try {
     const results = await exerciseDay();
     workoutDay.innerHTML = results.title;
-    console.log(results);
 
     const exercisePromises = Object.values(results);
-    console.log(exercisePromises);
     const numExercises = exercisePromises.length;
-    console.log(numExercises);
 
     if (numExercises === 0) {
       return null;
     } else {
+      // Loop through the exercise promises
       for (let i = 1; i <= numExercises; i++) {
-        const exercise = await exercisePromises[i - 1];
-        const res = await exercise;
+        const exercise = await results[`exercise${i}`];
         const clone = template.content.cloneNode(true);
-        clone.querySelector("#exercise-name").textContent = res.name;
-        clone.querySelector("#exercise-sets").textContent = res.sets;
-        clone.querySelector("#exercise-reps").textContent = res.reps;
-        clone.querySelector("#exercise-name").addEventListener("click", () => {
+        const exName = clone.getElementById("exercise-name");
+        const exSets = clone.getElementById("exercise-sets");
+        const exReps = clone.getElementById("exercise-reps");
+        const instruc = clone.getElementById("instruc");
+
+        exName.textContent = exercise.name;
+        exSets.textContent = exercise.sets;
+        exReps.textContent = exercise.reps;
+        instruc.addEventListener("click", () => {
           workoutPage.classList.add("hidden");
           instrucPage.classList.remove("hidden");
-          instrucInfo.innerHTML = res.instruc;
           nav.classList.add("hidden");
+          instrucInfo.innerHTML = exercise.instruc;
         });
+
         workoutInfo.appendChild(clone);
       }
     }
